@@ -1,0 +1,46 @@
+/*****************************************************************
+ * Copyright (C) 2017 Robert Valler - All rights reserved.
+ *
+ * This file is part of the project: <insert project name here>
+ *
+ * This project can not be copied and/or distributed
+ * without the express permission of the copyright holder
+ *****************************************************************/
+
+#ifndef CORE__H
+#define CORE__H
+
+#include "base_types.h"
+
+#include <memory>
+
+// forward declaration
+struct SPImpl;
+class CStateHndl;
+
+enum class ECoreStatus : unsigned int {
+    ENone =0,
+    EActive,
+    EShutdown,
+    EUnknown
+};
+
+class CCore {
+public:
+    CCore(const SCmdLineParm& parm);
+    ~CCore();
+
+    int Start();
+    ECoreStatus Status();
+    int Stop();
+
+private:
+
+    void StatusCallback(const std::string& gui_operator, const std::string& gui_operand);
+    ECoreStatus mCurrentCoreStatus{ECoreStatus::EUnknown};
+    SCmdLineParm mParm;
+    std::unique_ptr<SPImpl> mpPImpl;
+    std::unique_ptr<CStateHndl> mpStateMachine;
+};
+
+#endif // CORE__H
