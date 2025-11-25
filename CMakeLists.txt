@@ -1,5 +1,5 @@
 #/*****************************************************************
-# * Copyright (C) 2017 Robert Valler - All rights reserved.
+# * Copyright (C) 2025 Robert Valler - All rights reserved.
 # *
 # * This file is part of the project: <insert project name here>
 # *
@@ -44,7 +44,9 @@ find_package(protobuf 6.32.1 REQUIRED)
 find_package(imgui 1.92.2 REQUIRED)
 find_package(glfw3 3.3.8 REQUIRED)
 find_package(GLEW 2.2.0 REQUIRED)
-find_package(Qt5 COMPONENTS Core Widgets)
+find_package(Qt6 COMPONENTS Core Widgets)
+#find_package(wxwidget 3.2.8 REQUIRED)
+#find_package(wxWidgets 3.2.8 REQUIRED base core aui xrc html xml adv gl net qa)
 
 
 if(TEST_ENABLE)
@@ -110,7 +112,7 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CMAKE_THREAD_LIBS_INIT}
-    Qt5::Widgets
+    Qt6::Widgets
     imgui::imgui
     glfw
     GLEW::GLEW

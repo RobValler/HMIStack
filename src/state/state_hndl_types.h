@@ -1,5 +1,5 @@
 /*****************************************************************
- * Copyright (C) 2017 Robert Valler - All rights reserved.
+ * Copyright (C) 2025 Robert Valler - All rights reserved.
  *
  * This file is part of the project: <insert project name here>
  *

@@ -1,5 +1,5 @@
 #/*****************************************************************
-# * Copyright (C) 2017 Robert Valler - All rights reserved.
+# * Copyright (C) 2025 Robert Valler - All rights reserved.
 # *
 # * This file is part of the project: <insert project name here>
 # *
@@ -24,6 +24,7 @@ class HMIStackRecipe(ConanFile):
         self.requires("imgui/1.92.2b")
         self.requires("glfw/3.3.8")
         self.requires("glew/2.2.0")
+        #self.requires("wxwidgets/3.2.8")
 
     def layout(self):
         cmake_layout(self)
