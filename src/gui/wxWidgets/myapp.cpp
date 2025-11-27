@@ -1,7 +1,8 @@
 
 #include "myapp.h"
 
-//wxIMPLEMENT_APP(MyApp);
+wxIMPLEMENT_APP_NO_MAIN(MyApp);
+
 
 
 enum
@@ -12,14 +13,14 @@ enum
 bool MyApp::OnInit()
 {
 
-    // wxWindow *window = new wxWindow();
-    // MyFrame *frame = new MyFrame(window);
-    // frame->Show(true);
+    //wxWindow *window = new wxWindow();
+    MyFrame *frame = new MyFrame();
+    frame->Show(true);
     return true;
 }
 
-MyFrame::MyFrame(wxWindow *parent)
-    : wxFrame(parent, wxID_ANY, "Hello World")
+MyFrame::MyFrame()
+    : wxFrame(nullptr, wxID_ANY, "Hello World")
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
@@ -58,4 +59,8 @@ void MyFrame::OnAbout(wxCommandEvent& event)
 void MyFrame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
+}
+
+void CHandler::Start(SCmdLineParm parm) {
+    wxEntry(parm.m_argc, parm.m_argv);
 }

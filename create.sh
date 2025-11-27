@@ -1,6 +1,6 @@
 #!/bin/sh
-#BUILD_TYPE=Debug
-BUILD_TYPE=Release
+BUILD_TYPE=Debug
+#BUILD_TYPE=Release
 
 echo "Build type $BUILD_TYPE"
 set -e

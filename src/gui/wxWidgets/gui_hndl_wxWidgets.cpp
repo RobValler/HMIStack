@@ -9,9 +9,10 @@
 
 #include "gui_hndl_wxWidgets.h"
 
+#include "base_types.h"
 #include "myapp.h"
 
-#include <chrono>
+#include <iostream>
 
 void CGuiHndlWxWidgets::Start() {
 
@@ -48,15 +49,10 @@ void CGuiHndlWxWidgets::GetCommand(std::string& gui_operator, std::string& gui_o
 
 void CGuiHndlWxWidgets::ThreadFuncServer() {
 
-    MyApp app;
-
-    app.OnInit();
-
-    while(!mIsExistRequest) {
-
-
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-    }
+    CHandler h;
+    std::cout << "Starting wxWidget example" << std::endl;
+    std::cout << "Now you see me ..." << std::endl;
+    h.Start(mParm); // should be blocking
+    std::cout << "... now you don't!!" << std::endl;
 
 }
