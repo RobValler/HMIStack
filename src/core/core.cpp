@@ -16,10 +16,10 @@
 
 #include "gui_hndl_Qt.h"
 #include "gui_hndl_dearImGui.h"
+#include "gui_hndl_wxWidgets.h"
 #include "gui_hndl_dmy.h"
 
 #include <iostream>
-
 
 struct SPImpl {
 
@@ -44,7 +44,7 @@ CCore::CCore(const SCmdLineParm& parm)
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDearImGui>(mParm);
             break;
         case EHMI_FW::EwxWidget:
-            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDmy>(mParm);
+            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlWxWidgets>(mParm);
             break;
         case EHMI_FW::EDummy:
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDmy>(mParm);

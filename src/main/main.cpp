@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     SCmdLineParm parm;
     parm.m_argc = argc;
     parm.m_argv = argv;
-    parm.hmi_framework = EHMI_FW::EQt;
+    parm.hmi_framework = EHMI_FW::EwxWidget;
 
     CCore test(parm);
     test.Start();

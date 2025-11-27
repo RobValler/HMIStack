@@ -45,8 +45,7 @@ find_package(imgui 1.92.2 REQUIRED)
 find_package(glfw3 3.3.8 REQUIRED)
 find_package(GLEW 2.2.0 REQUIRED)
 find_package(Qt6 COMPONENTS Core Widgets)
-#find_package(wxwidget 3.2.8 REQUIRED)
-#find_package(wxWidgets 3.2.8 REQUIRED base core aui xrc html xml adv gl net qa)
+find_package(wxWidgets REQUIRED COMPONENTS core base)
 
 
 if(TEST_ENABLE)
@@ -58,6 +57,7 @@ include_directories(${QT_USE_FILE})
 include_directories(${IMGUI_INCLUDE_DIRS})
 
 #INTERNAL INCLUDES
+#include(${wxWidgets_USE_FILE})
 include_directories(${CMAKE_SOURCE_DIR}/src/main)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
 include_directories(${CMAKE_SOURCE_DIR}/src/common)
@@ -66,7 +66,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src/operations)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Qt)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/DearImGui)
-include_directories(${CMAKE_SOURCE_DIR}/src/gui/DearImGui/bindings)
+include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets)
+include_directories(${CMAKE_SOURCE_DIR}/bindings)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Dummy)
 
 
@@ -79,8 +80,9 @@ file(GLOB APP_SOURCES
     ${CMAKE_SOURCE_DIR}/src/gui/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/Qt/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/*.cpp
-    ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/bindings/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/Dummy/*.cpp
+    ${CMAKE_SOURCE_DIR}/bindings/*.cpp
 )
 
 #HEADERS FILES
@@ -93,7 +95,7 @@ file(GLOB APP_HEADERS
     ${CMAKE_SOURCE_DIR}/src/gui/Qt/*.h
     ${CMAKE_SOURCE_DIR}/src/gui/Qt/*.ui
     ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/*.h
-    ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/bindings/*.h
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/*.h
     ${CMAKE_SOURCE_DIR}/src/gui/Dummy/*.h
     ${CMAKE_SOURCE_DIR}/bindings/*.h
 )
@@ -116,6 +118,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     imgui::imgui
     glfw
     GLEW::GLEW
+    wxWidgets::wxWidgets
 )
 
 if(TEST_ENABLE)
