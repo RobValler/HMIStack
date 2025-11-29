@@ -67,6 +67,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src/gui)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Qt)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/DearImGui)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets)
+include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen)
+include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/app)
 include_directories(${CMAKE_SOURCE_DIR}/bindings)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Dummy)
 
@@ -81,6 +83,8 @@ file(GLOB APP_SOURCES
     ${CMAKE_SOURCE_DIR}/src/gui/Qt/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/app/*.cpp
     ${CMAKE_SOURCE_DIR}/src/gui/Dummy/*.cpp
     ${CMAKE_SOURCE_DIR}/bindings/*.cpp
 )
@@ -96,6 +100,8 @@ file(GLOB APP_HEADERS
     ${CMAKE_SOURCE_DIR}/src/gui/Qt/*.ui
     ${CMAKE_SOURCE_DIR}/src/gui/DearImGui/*.h
     ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/*.h
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen/*.h
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/app/*.h
     ${CMAKE_SOURCE_DIR}/src/gui/Dummy/*.h
     ${CMAKE_SOURCE_DIR}/bindings/*.h
 )

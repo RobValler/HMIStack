@@ -49,10 +49,10 @@ void CGuiHndlWxWidgets::GetCommand(std::string& gui_operator, std::string& gui_o
 
 void CGuiHndlWxWidgets::ThreadFuncServer() {
 
-    CHandler h;
+    CHandler handler;
     std::cout << "Starting wxWidget example" << std::endl;
     std::cout << "Now you see me ..." << std::endl;
-    h.Start(mParm); // should be blocking
+    handler.Start(mParm); // should be blocking
     std::cout << "... now you don't!!" << std::endl;
 
 }

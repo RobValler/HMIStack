@@ -3,6 +3,7 @@
 #pragma once
 
 #include "base_types.h"
+#include "wxTestBase.h"
 
 // Start of wxWidgets "Hello World" Program
 #include <wx/wx.h>
@@ -14,8 +15,7 @@ public:
     bool OnInit() override;
 };
 
-
-class MyFrame : public wxFrame
+class MyFrame : public wxTestForm
 {
 public:
     MyFrame();
