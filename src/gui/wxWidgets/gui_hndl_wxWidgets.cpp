@@ -9,10 +9,18 @@
 
 #include "gui_hndl_wxWidgets.h"
 
-#include "base_types.h"
-#include "myapp.h"
+// #include "base_types.h"
+#include "handler.h"
 
 #include <iostream>
+
+CGuiHndlWxWidgets::CGuiHndlWxWidgets(const SGuiHndlTypes& parm)
+    : mParm(parm)
+    , mpHandler(std::make_shared<CHandler>(mParm))
+{   }
+
+CGuiHndlWxWidgets::~CGuiHndlWxWidgets()
+{   }
 
 void CGuiHndlWxWidgets::Start() {
 
@@ -21,11 +29,12 @@ void CGuiHndlWxWidgets::Start() {
 
 void CGuiHndlWxWidgets::Stop() {
 
+    mpHandler->Stop();
     mtGuiHandler.join();
 }
 
 void CGuiHndlWxWidgets::Update(std::string gui_operator, std::string gui_operand) {
-    
+
 
 }
 
@@ -49,10 +58,9 @@ void CGuiHndlWxWidgets::GetCommand(std::string& gui_operator, std::string& gui_o
 
 void CGuiHndlWxWidgets::ThreadFuncServer() {
 
-    CHandler handler;
     std::cout << "Starting wxWidget example" << std::endl;
     std::cout << "Now you see me ..." << std::endl;
-    handler.Start(mParm); // should be blocking
+    mpHandler->Start(); // should be blocking
     std::cout << "... now you don't!!" << std::endl;
 
 }

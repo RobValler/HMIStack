@@ -1,28 +1,17 @@
 
 #include "myapp.h"
+#include "myframe.h"
 
 wxIMPLEMENT_APP_NO_MAIN(MyApp);
 
-
-
-enum
-{
-    ID_Hello = 1
-};
-
-bool MyApp::OnInit()
-{
-    MyFrame *frame = new MyFrame();
-    frame->Show(true);
+bool MyApp::OnInit() {
+    mpFrame = std::make_shared<MyFrame>(mCBFunc);
+    mpFrame->Show(true);
     return true;
 }
 
-MyFrame::MyFrame()
-    : wxTestForm(nullptr, wxID_ANY, "Hello World")
-{
+int MyApp::OnExit() {
 
-}
-
-void CHandler::Start(SCmdLineParm parm) {
-    wxEntry(parm.m_argc, parm.m_argv);
+    mpFrame->Show(false);
+    return 0;
 }

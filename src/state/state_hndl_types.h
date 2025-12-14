@@ -10,8 +10,9 @@
 #ifndef STATE_HNDL_TYPES__H
 #define STATE_HNDL_TYPES__H
 
+#include "base_types.h"
+
 #include <memory>
-#include <functional>
 
 class CMsgHndl;
 //class CNetworkHndl;
@@ -25,7 +26,7 @@ struct SStateHndlParm {
     std::shared_ptr<CAgentHndl> mpAgentHndl;
     std::shared_ptr<IGuiHndl> mpGuiHndl;
     std::shared_ptr<COperationHndl> mpOperationHndl;
-    std::function<void(std::string, std::string)> mCBFunc;
+    CBFunc mCBFunc;
 };
 
 #endif // STATE_HNDL_TYPES__H

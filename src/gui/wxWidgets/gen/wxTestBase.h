@@ -45,7 +45,7 @@ class wxTestForm : public wxFrame
 		wxPanel* m_panel2;
 		wxPanel* m_panel3;
 		wxButton* m_button1;
-		wxButton* m_button2;
+		wxButton* m_button22;
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class

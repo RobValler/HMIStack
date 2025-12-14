@@ -1,36 +1,30 @@
 
 
-#pragma once
+#ifndef MYAPP__H
+#define MYAPP__H
 
+// #include "gui_hndl_types.h"
 #include "base_types.h"
-#include "wxTestBase.h"
+//#include "wxTestBase.h"
 
-// Start of wxWidgets "Hello World" Program
 #include <wx/wx.h>
 
+#include <memory>
+
+class MyFrame;
 
 class MyApp : public wxApp
 {
 public:
     bool OnInit() override;
-};
-
-class MyFrame : public wxTestForm
-{
-public:
-    MyFrame();
-
+    int OnExit() override;
+    void AddCallBack(const CBFunc& func) {
+        mCBFunc = func;
+    }
 private:
-    void OnHello(wxCommandEvent& event);
-    void OnExit(wxCommandEvent& event);
-    void OnAbout(wxCommandEvent& event);
+    CBFunc mCBFunc;
+    std::shared_ptr<MyFrame> mpFrame;
+
 };
 
-class CHandler
-{
-public:
-    CHandler() =default;
-    ~CHandler() =default;
-
-    void Start(SCmdLineParm parm);
-};
+#endif // MYAPP__H

@@ -18,6 +18,7 @@
 #include "gui_hndl_dearImGui.h"
 #include "gui_hndl_wxWidgets.h"
 #include "gui_hndl_dmy.h"
+#include "gui_hndl_types.h"
 
 #include <iostream>
 
@@ -43,9 +44,14 @@ CCore::CCore(const SCmdLineParm& parm)
         case EHMI_FW::EImGui:
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDearImGui>(mParm);
             break;
-        case EHMI_FW::EwxWidget:
-            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlWxWidgets>(mParm);
+        case EHMI_FW::EwxWidget: {
+            SGuiHndlTypes local_gui_parms;
+            local_gui_parms.cmd_line_parm = mParm;
+            // local_gui_parms.cb_func = [this](const SCBFuncParms& parms){ this->StatusCallback(parms); };
+
+            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlWxWidgets>(local_gui_parms);
             break;
+        }
         case EHMI_FW::EDummy:
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDmy>(mParm);
             break;
@@ -56,10 +62,7 @@ CCore::CCore(const SCmdLineParm& parm)
     SStateHndlParm LocalStateHndlParm;
     LocalStateHndlParm.mpGuiHndl = mpPImpl->mpGuiHndl;
     LocalStateHndlParm.mpOperationHndl = mpPImpl->mpOperationHndl;
-    LocalStateHndlParm.mCBFunc = [this](std::string gui_operator,
-                                        std::string gui_operand)
-                                        { this->StatusCallback(gui_operator, gui_operand); };
-
+    LocalStateHndlParm.mCBFunc = [this](const SCBFuncParms& data){ this->StatusCallback(data); };
     mpStateMachine = std::make_unique<CStateHndl>(LocalStateHndlParm);
 }
 
@@ -82,6 +85,7 @@ ECoreStatus CCore::Status() {
 
 int CCore::Stop() {
 
+    mCurrentCoreStatus = ECoreStatus::EShutdown;
     std::cout << "Stop" << std::endl;
     mpPImpl->mpGuiHndl->Stop();
     mpPImpl->mpOperationHndl->Stop();
@@ -89,11 +93,11 @@ int CCore::Stop() {
     return 0;
 }
 
-void CCore::StatusCallback(const std::string& gui_operator, const std::string& gui_operand) {
+void CCore::StatusCallback(const SCBFuncParms& data) {
 
-    if(gui_operator == "program_status") {
+    if(data.cb_operator == "program_status") {
 
-        if(gui_operand == "stop") {
+        if(data.cb_operand == "stop") {
             // shutdown request received
             Stop();
         }

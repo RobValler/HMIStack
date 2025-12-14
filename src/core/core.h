@@ -36,7 +36,7 @@ public:
 
 private:
 
-    void StatusCallback(const std::string& gui_operator, const std::string& gui_operand);
+    void StatusCallback(const SCBFuncParms& data);
     ECoreStatus mCurrentCoreStatus{ECoreStatus::EUnknown};
     SCmdLineParm mParm;
     std::unique_ptr<SPImpl> mpPImpl;

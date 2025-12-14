@@ -10,7 +10,9 @@
 #ifndef GUI_HNDL_WXWIDGETS__H
 #define GUI_HNDL_WXWIDGETS__H
 
-#include "base_types.h"
+
+//#include "base_types.h"
+#include "gui_hndl_types.h"
 
 #include "i_gui_hndl.h"
 
@@ -18,13 +20,15 @@
 #include <thread>
 #include <atomic>
 #include <mutex>
+#include <memory>
 
+class CHandler;
 
 class CGuiHndlWxWidgets : public IGuiHndl
 {
 public:
-    CGuiHndlWxWidgets(const SCmdLineParm& parm) : mParm(parm){};
-    ~CGuiHndlWxWidgets() override =default;
+    CGuiHndlWxWidgets(const SGuiHndlTypes& parm);
+    ~CGuiHndlWxWidgets();
     void Start() override;
     void Stop() override;
     void Update(std::string gui_operator, std::string gui_operand) override;
@@ -33,9 +37,11 @@ public:
 
 private:
     void ThreadFuncServer();
-    SCmdLineParm mParm;
+    SGuiHndlTypes mParm;
     std::atomic<bool> mIsExistRequest{false};
     std::thread mtGuiHandler;
+
+    std::shared_ptr<CHandler> mpHandler;
 
     std::string mCommandGUIoperator;
     std::string mCommandGUIoperand;
