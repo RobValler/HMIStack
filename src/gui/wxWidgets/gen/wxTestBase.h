@@ -10,17 +10,20 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
-#include <wx/button.h>
-#include <wx/string.h>
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
+#include <wx/menu.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/string.h>
+#include <wx/stattext.h>
 #include <wx/sizer.h>
-#include <wx/menu.h>
+#include <wx/panel.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/notebook.h>
+#include <wx/button.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
 
@@ -34,9 +37,15 @@ class wxTestForm : public wxFrame
 	private:
 
 	protected:
+		wxMenuBar* m_menubar2;
+		wxStaticText* m_staticText1;
+		wxNotebook* m_notebook1;
+		wxPanel* m_panel1;
+		wxStaticText* m_staticText2;
+		wxPanel* m_panel2;
+		wxPanel* m_panel3;
 		wxButton* m_button1;
 		wxButton* m_button2;
-		wxMenuBar* m_menubar2;
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class
