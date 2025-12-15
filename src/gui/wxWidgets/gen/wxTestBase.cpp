@@ -101,7 +101,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer1->Add( m_button22, 0, wxALL, 5 );
 
 
-	bSizer1->Add( fgSizer1, 1, wxALIGN_BOTTOM|wxEXPAND, 5 );
+	bSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
 
 
 	this->SetSizer( bSizer1 );
@@ -111,7 +111,6 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 
 	// Connect Events
-	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( wxTestForm::TestFormOnQuit ) );
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 	m_button22->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 }

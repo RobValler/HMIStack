@@ -23,13 +23,13 @@ class MyApp : public wxApp
 {
 public:
     bool OnInit() override;
-    int OnExit() override;
+    //int OnExit() override;
     void AddCallBack(const CBFunc& func) {
         mCBFunc = func;
     }
 private:
     CBFunc mCBFunc;
-    std::shared_ptr<MyFrame> mpFrame;
+    MyFrame* mpFrame = nullptr;
 
 };
 

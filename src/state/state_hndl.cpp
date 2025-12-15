@@ -20,6 +20,7 @@ void CStateHndl::Start() {
 
 void CStateHndl::Stop() {
 
+    mExitCalled = true;
     mtProcess.join();
 }
 

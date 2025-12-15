@@ -60,7 +60,6 @@
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
-      <event name="OnClose">TestFormOnQuit</event>
       <object class="wxMenuBar" expanded="false">
         <property name="bg"></property>
         <property name="context_help"></property>
@@ -718,7 +717,7 @@
         </object>
         <object class="sizeritem" expanded="true">
           <property name="border">5</property>
-          <property name="flag">wxALIGN_BOTTOM|wxEXPAND</property>
+          <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
           <object class="wxFlexGridSizer" expanded="false">
             <property name="cols">2</property>

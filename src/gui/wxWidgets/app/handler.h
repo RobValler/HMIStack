@@ -27,7 +27,7 @@ public:
 
 private:
     SGuiHndlTypes mParm;
-    std::shared_ptr<MyApp> mpMyApp;
+    MyApp* mpMyApp = nullptr;
 };
 
 #endif // HANDLER__H

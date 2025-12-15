@@ -17,14 +17,18 @@ wxIMPLEMENT_APP_NO_MAIN(MyApp);
 bool MyApp::OnInit() {
 
     std::cout << "OnInit called" << std::endl;
-    mpFrame = std::make_shared<MyFrame>(mCBFunc);
+    mpFrame = new MyFrame(mCBFunc);
+
     mpFrame->Show(true);
     return true;
 }
 
-int MyApp::OnExit() {
+// int MyApp::OnExit() {
 
-    std::cout << "OnExit called" << std::endl;
-    mpFrame->Show(false);
-    return 0;
-}
+//     std::cout << "OnExit called" << std::endl;
+//     // mpFrame->Show(false);
+//     // mpFrame->Close();
+//     return 0;
+// }
+
+

@@ -52,7 +52,6 @@ class wxTestForm : public wxFrame
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class
-		virtual void TestFormOnQuit( wxCloseEvent& event ) { event.Skip(); }
 		virtual void Btn1_Click( wxCommandEvent& event ) { event.Skip(); }
 
 

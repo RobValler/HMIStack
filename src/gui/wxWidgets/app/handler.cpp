@@ -11,13 +11,15 @@
 
 #include "myapp.h"
 
+#include <iostream>
 
 CHandler::CHandler(const SGuiHndlTypes& parms)
     : mParm(parms)
-    , mpMyApp(std::make_shared<MyApp>())
 {}
 
 void CHandler::Start() {
+
+    mpMyApp = new MyApp();
 
     if(!mpMyApp) {
         return;
@@ -28,20 +30,17 @@ void CHandler::Start() {
         return;
     }
 
-    wxApp::SetInstance(mpMyApp.get());
+    wxApp::SetInstance(mpMyApp);
     wxTheApp->CallOnInit();
     wxTheApp->OnRun();
     wxTheApp->OnExit();
 
     wxEntryCleanup();
 
-    SCBFuncParms p;
-    p.cb_operator = "program_status";
-    p.cb_operand = "stop";
-    mParm.cb_func(p);
-
 }
 
 void CHandler::Stop() {
+
+    std::cout << "ExitMainLoop" << std::endl;
     wxTheApp->ExitMainLoop();
 }

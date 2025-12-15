@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     test.Start();
     while(!gExitRequest) {
 
-        if(ECoreStatus::EShutdown == test.Status()) {
+        if(ECoreStatus::EShutdownRequest == test.Status()) {
             break;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));

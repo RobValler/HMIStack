@@ -22,6 +22,7 @@ enum class ECoreStatus : unsigned int {
     ENone =0,
     EActive,
     EShutdown,
+    EShutdownRequest,
     EUnknown
 };
 

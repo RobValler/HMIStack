@@ -84,26 +84,29 @@ ECoreStatus CCore::Status() {
 
 int CCore::Stop() {
 
-    mCurrentCoreStatus = ECoreStatus::EShutdown;
     std::cout << "Stop" << std::endl;
     mpPImpl->mpGuiHndl->Stop();
     mpPImpl->mpOperationHndl->Stop();
     mpStateMachine->Stop();
+
+    if(true) {
+        mCurrentCoreStatus = ECoreStatus::EShutdown;
+    }
+
     return 0;
 }
 
 void CCore::StatusCallback(const SCBFuncParms& data) {
 
-    std::cout   << "StatusCallback(...) called!"
-                << "operator = " << data.cb_operator
-                << "operand = " << data.cb_operand
-                << std::endl;
+    std::cout << "StatusCallback(...) called!\n"
+              << "operator = " << data.cb_operator << "\n"
+              << "operand = " << data.cb_operand << std::endl;
 
-    if(data.cb_operator == "program_status") {
+    if(data.cb_operator == "status") {
 
         if(data.cb_operand == "stop") {
-            // shutdown request received
-            Stop();
+            // set the shutdown request flag
+            mCurrentCoreStatus = ECoreStatus::EShutdownRequest;
         }
     }
 }

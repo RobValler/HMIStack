@@ -13,16 +13,10 @@
 
 MyFrame::MyFrame(const CBFunc& func)
     : wxTestForm(nullptr, wxID_ANY, "Hello World")
-    , mCBFunc(func)
-{
-    // wxPanel* panel = new wxPanel(this);
-
-    // wxBoxSizer* sizer = new wxBoxSizer(wxBOTH);
-    // sizer->Add(m_notebook1, 1, wxEXPAND | wxALL, 5);
-
-    // panel->SetSizer(sizer);
+    , mCBFunc(func) {
 
 
+    Bind(wxEVT_CLOSE_WINDOW, &MyFrame::OnClose, this);
 
     std::cout << "----> MyFrame ctor called" << std::endl;
 }
@@ -31,3 +25,15 @@ MyFrame::~MyFrame() {
 
     std::cout << "----> MyFrame dtor called" << std::endl;
 }
+
+void MyFrame::OnClose(wxCloseEvent& event) {
+
+    event.Veto();   // block close
+    Unbind(wxEVT_CLOSE_WINDOW, &MyFrame::OnClose, this);
+
+    SCBFuncParms p;
+    p.cb_operator = "status";
+    p.cb_operand = "stop";
+    mCBFunc(p);
+}
+
