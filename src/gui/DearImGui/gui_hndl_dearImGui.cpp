@@ -112,7 +112,7 @@ void CGuiHndlDearImGui::ThreadFuncServer() {
         // ## Add the GUI elements ##
         // text box
         ImGui::SetCursorPos(ImVec2(250,400));
-        ImGui::Text(local_test_string.c_str());
+        ImGui::Text("%s", local_test_string.c_str());
 
         // Button: test cmd message
         ImGui::SetCursorPos(ImVec2(20,40));

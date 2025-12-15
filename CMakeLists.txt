@@ -110,6 +110,7 @@ file(GLOB APP_HEADERS
 file(GLOB APP_CONFIG
     ${CMAKE_SOURCE_DIR}/README.md
     ${CMAKE_SOURCE_DIR}/conanfile.py
+    ${CMAKE_SOURCE_DIR}/create.sh
 )
 
 add_executable(${PROJECT_NAME}
