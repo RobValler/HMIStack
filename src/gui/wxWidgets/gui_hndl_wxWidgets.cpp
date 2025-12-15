@@ -9,7 +9,6 @@
 
 #include "gui_hndl_wxWidgets.h"
 
-// #include "base_types.h"
 #include "handler.h"
 
 #include <iostream>
@@ -17,10 +16,10 @@
 CGuiHndlWxWidgets::CGuiHndlWxWidgets(const SGuiHndlTypes& parm)
     : mParm(parm)
     , mpHandler(std::make_shared<CHandler>(mParm))
-{   }
+{ /* do nothing */ }
 
 CGuiHndlWxWidgets::~CGuiHndlWxWidgets()
-{   }
+{ /* do nothing */ }
 
 void CGuiHndlWxWidgets::Start() {
 

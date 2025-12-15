@@ -11,7 +11,7 @@
 
 wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 400,350 ), wxDefaultSize );
 	this->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	m_menubar2 = new wxMenuBar( 0 );
@@ -26,8 +26,28 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer1->Add( m_staticText1, 0, wxALL|wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer_notebook;
-	bSizer_notebook = new wxBoxSizer( wxVERTICAL );
+	wxFlexGridSizer* fgSizer4;
+	fgSizer4 = new wxFlexGridSizer( 1, 2, 0, 0 );
+	fgSizer4->AddGrowableCol( 1 );
+	fgSizer4->AddGrowableRow( 0 );
+	fgSizer4->SetFlexibleDirection( wxBOTH );
+	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	wxBoxSizer* bSizer8;
+	bSizer8 = new wxBoxSizer( wxVERTICAL );
+
+	bSizer8->SetMinSize( wxSize( 150,-1 ) );
+	m_button8 = new wxButton( this, wxID_ANY, _("MyButton"), wxPoint( -1,-1 ), wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button8, 0, wxALL|wxEXPAND, 5 );
+
+	m_button7 = new wxButton( this, wxID_ANY, _("MyButton"), wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button7, 0, wxALL|wxEXPAND, 5 );
+
+	m_button6 = new wxButton( this, wxID_ANY, _("MyButton"), wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button6, 0, wxALL|wxEXPAND, 5 );
+
+
+	fgSizer4->Add( bSizer8, 5, wxEXPAND, 5 );
 
 	m_notebook1 = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
 	m_notebook1->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
@@ -64,13 +84,13 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	bSizer4->Fit( m_panel3 );
 	m_notebook1->AddPage( m_panel3, _("a page"), false );
 
-	bSizer_notebook->Add( m_notebook1, 4, wxALL|wxEXPAND, 5 );
+	fgSizer4->Add( m_notebook1, 5, wxEXPAND | wxALL, 5 );
 
 
-	bSizer1->Add( bSizer_notebook, 5, wxEXPAND, 5 );
+	bSizer1->Add( fgSizer4, 5, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer1;
-	fgSizer1 = new wxFlexGridSizer( 0, 2, 0, 0 );
+	fgSizer1 = new wxFlexGridSizer( 1, 2, 0, 0 );
 	fgSizer1->SetFlexibleDirection( wxBOTH );
 	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -81,7 +101,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer1->Add( m_button22, 0, wxALL, 5 );
 
 
-	bSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
+	bSizer1->Add( fgSizer1, 1, wxALIGN_BOTTOM|wxEXPAND, 5 );
 
 
 	this->SetSizer( bSizer1 );
@@ -91,6 +111,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 
 	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( wxTestForm::TestFormOnQuit ) );
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 	m_button22->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 }

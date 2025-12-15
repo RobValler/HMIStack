@@ -42,7 +42,6 @@ struct SCBFuncParms {
     // etc ...
 };
 
-//std::function<int(int, int)> func)
-using CBFunc = std::function<void(SCBFuncParms)>;
+using CBFunc = std::function<void(const SCBFuncParms&)>;
 
 #endif // PROJECTNAME_BASE_TYPES__H

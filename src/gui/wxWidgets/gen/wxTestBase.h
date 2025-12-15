@@ -17,13 +17,13 @@
 #include <wx/settings.h>
 #include <wx/string.h>
 #include <wx/stattext.h>
-#include <wx/sizer.h>
-#include <wx/panel.h>
+#include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/sizer.h>
+#include <wx/panel.h>
 #include <wx/notebook.h>
-#include <wx/button.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
 
@@ -39,6 +39,9 @@ class wxTestForm : public wxFrame
 	protected:
 		wxMenuBar* m_menubar2;
 		wxStaticText* m_staticText1;
+		wxButton* m_button8;
+		wxButton* m_button7;
+		wxButton* m_button6;
 		wxNotebook* m_notebook1;
 		wxPanel* m_panel1;
 		wxStaticText* m_staticText2;
@@ -49,6 +52,7 @@ class wxTestForm : public wxFrame
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class
+		virtual void TestFormOnQuit( wxCloseEvent& event ) { event.Skip(); }
 		virtual void Btn1_Click( wxCommandEvent& event ) { event.Skip(); }
 
 

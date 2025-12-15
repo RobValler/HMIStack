@@ -1,15 +1,21 @@
-
+/*****************************************************************
+ * Copyright (C) 2025 Robert Valler - All rights reserved.
+ *
+ * This file is part of the project: <insert project name here>
+ *
+ * This project can not be copied and/or distributed
+ * without the express permission of the copyright holder
+ *****************************************************************/
 
 #ifndef MYAPP__H
 #define MYAPP__H
 
-// #include "gui_hndl_types.h"
 #include "base_types.h"
-//#include "wxTestBase.h"
 
 #include <wx/wx.h>
 
 #include <memory>
+
 
 class MyFrame;
 

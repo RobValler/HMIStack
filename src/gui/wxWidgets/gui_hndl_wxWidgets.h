@@ -10,8 +10,6 @@
 #ifndef GUI_HNDL_WXWIDGETS__H
 #define GUI_HNDL_WXWIDGETS__H
 
-
-//#include "base_types.h"
 #include "gui_hndl_types.h"
 
 #include "i_gui_hndl.h"

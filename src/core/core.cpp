@@ -47,8 +47,7 @@ CCore::CCore(const SCmdLineParm& parm)
         case EHMI_FW::EwxWidget: {
             SGuiHndlTypes local_gui_parms;
             local_gui_parms.cmd_line_parm = mParm;
-            // local_gui_parms.cb_func = [this](const SCBFuncParms& parms){ this->StatusCallback(parms); };
-
+            local_gui_parms.cb_func = [this](const SCBFuncParms& p){ this->StatusCallback(p); };
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlWxWidgets>(local_gui_parms);
             break;
         }
@@ -62,7 +61,7 @@ CCore::CCore(const SCmdLineParm& parm)
     SStateHndlParm LocalStateHndlParm;
     LocalStateHndlParm.mpGuiHndl = mpPImpl->mpGuiHndl;
     LocalStateHndlParm.mpOperationHndl = mpPImpl->mpOperationHndl;
-    LocalStateHndlParm.mCBFunc = [this](const SCBFuncParms& data){ this->StatusCallback(data); };
+    LocalStateHndlParm.mCBFunc = [this](const SCBFuncParms& p){ this->StatusCallback(p); };
     mpStateMachine = std::make_unique<CStateHndl>(LocalStateHndlParm);
 }
 
@@ -72,9 +71,9 @@ CCore::~CCore()
 int CCore::Start() {
 
     std::cout << "Start " << std::endl;
-    mpPImpl->mpGuiHndl->Start();
-    mpPImpl->mpOperationHndl->Start();
     mpStateMachine->Start();
+    mpPImpl->mpOperationHndl->Start();
+    mpPImpl->mpGuiHndl->Start();
     return 0;
 }
 
@@ -94,6 +93,11 @@ int CCore::Stop() {
 }
 
 void CCore::StatusCallback(const SCBFuncParms& data) {
+
+    std::cout   << "StatusCallback(...) called!"
+                << "operator = " << data.cb_operator
+                << "operand = " << data.cb_operand
+                << std::endl;
 
     if(data.cb_operator == "program_status") {
 
