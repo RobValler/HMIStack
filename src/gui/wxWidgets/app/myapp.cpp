@@ -16,6 +16,9 @@ wxIMPLEMENT_APP_NO_MAIN(MyApp);
 
 bool MyApp::OnInit() {
 
+    // make sure we can use PNG
+    wxInitAllImageHandlers();
+
     std::cout << "OnInit called" << std::endl;
     mpFrame = new MyFrame(mCBFunc);
 
@@ -23,12 +26,12 @@ bool MyApp::OnInit() {
     return true;
 }
 
-// int MyApp::OnExit() {
+int MyApp::OnExit() {
 
-//     std::cout << "OnExit called" << std::endl;
-//     // mpFrame->Show(false);
-//     // mpFrame->Close();
-//     return 0;
-// }
+    std::cout << "OnExit called" << std::endl;
+    mpFrame->Show(false);
+    mpFrame->Close();
+    return 0;
+}
 
 

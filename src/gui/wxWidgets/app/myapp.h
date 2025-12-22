@@ -14,16 +14,13 @@
 
 #include <wx/wx.h>
 
-#include <memory>
-
-
 class MyFrame;
 
 class MyApp : public wxApp
 {
 public:
     bool OnInit() override;
-    //int OnExit() override;
+    int OnExit() override;
     void AddCallBack(const CBFunc& func) {
         mCBFunc = func;
     }

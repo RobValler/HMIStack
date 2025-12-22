@@ -16,25 +16,24 @@ set(W1)
 set(Wfloat-conversion)
 
 #OPTIONS
-option(TEST_ENABLE "Enable GTest" OFF)
-
-# SET(GUI_FW_SETTING "QT_GUI" CACHE STRING "GUI Framework")
-# SET_PROPERTY(CACHE GUI_FW_SETTING PROPERTY STRINGS QT_GUI DEARIMGUI_GUI)
-# if(GUI_FW_SETTING STREQUAL "QT_GUI")
-#     add_compile_definitions(QT_GUI=1 GUI_FW=QT_GUI)
-# elseif(GUI_FW_SETTING STREQUAL "DEARIMGUI_GUI")
-#     add_compile_definitions(DEARIMGUI_GUI=1 GUI_FW=DEARIMGUI_GUI)
-# else()
-#     message(FATAL_ERROR "Unknown GUI_FW_SETTING: ${GUI_FW_SETTING}")
-# endif()
-
+option(TEST_ENABLE "Enable GTest" ON)
+SET(GUI_FW_SETTING "QT_GUI" CACHE STRING "GUI Framework")
+SET_PROPERTY(CACHE GUI_FW_SETTING PROPERTY STRINGS QT_GUI DEARIMGUI_GUI WXWIDGET_GUI)
+if(GUI_FW_SETTING STREQUAL "QT_GUI")
+    add_compile_definitions(QT_GUI=1 GUI_FW=QT_GUI)
+elseif(GUI_FW_SETTING STREQUAL "DEARIMGUI_GUI")
+    add_compile_definitions(DEARIMGUI_GUI=1 GUI_FW=DEARIMGUI_GUI)
+elseif(GUI_FW_SETTING STREQUAL "WXWIDGET_GUI")
+    add_compile_definitions(WXWIDGET_GUI=1 GUI_FW=WXWIDGET_GUI)
+else()
+    message(FATAL_ERROR "Unknown GUI_FW_SETTING: ${GUI_FW_SETTING}")
+endif()
 
 set(ProtobufIncludePath ${CMAKE_CURRENT_BINARY_DIR} CACHE INTERNAL src/messages)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
 
 #PACKAGES
 find_package(Threads REQUIRED)
@@ -46,18 +45,16 @@ find_package(glfw3 3.3.8 REQUIRED)
 find_package(GLEW 2.2.0 REQUIRED)
 find_package(Qt6 COMPONENTS Core Widgets)
 find_package(wxWidgets REQUIRED COMPONENTS core base)
-
-
 if(TEST_ENABLE)
 find_package(GTest REQUIRED)
 endif()
 
 #EXTERNAL INCLUDES
+include(${wxWidgets_USE_FILE})
 include_directories(${QT_USE_FILE})
 include_directories(${IMGUI_INCLUDE_DIRS})
 
 #INTERNAL INCLUDES
-#include(${wxWidgets_USE_FILE})
 include_directories(${CMAKE_SOURCE_DIR}/src/main)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
 include_directories(${CMAKE_SOURCE_DIR}/src/common)
@@ -71,7 +68,6 @@ include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/app)
 include_directories(${CMAKE_SOURCE_DIR}/bindings)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Dummy)
-
 
 #SOURCE FILES
 file(GLOB APP_SOURCES
@@ -128,6 +124,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     wxWidgets::wxWidgets
 )
 
+#COPY FILES
+file(GLOB IMG_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/gui/wxWidgets/gen/*.png
+)
+file(COPY ${IMG_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+
+
 if(TEST_ENABLE)
 ################### TEST ###################
 #INCLUDE
@@ -151,7 +154,7 @@ endif()
 
 message("######################################################################")
 message("# CONFIGURATION #")
-message("#################")
-message("# TEST_ENABLE:         [${TEST_ENABLE}]")
-#message("# GUI_FW_SETTING:      [${GUI_FW_SETTING}]")
+message("=================")
+message("# - TEST_ENABLE:       [${TEST_ENABLE}]")
+message("# - GUI_FW_SETTING:    [${GUI_FW_SETTING}]")
 message("######################################################################")

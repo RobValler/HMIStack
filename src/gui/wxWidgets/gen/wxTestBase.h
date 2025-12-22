@@ -42,7 +42,7 @@ class wxTestForm : public wxFrame
 		wxButton* m_button8;
 		wxButton* m_button7;
 		wxButton* m_button6;
-		wxNotebook* m_notebook1;
+		wxNotebook* m_notebook_main;
 		wxPanel* m_panel1;
 		wxStaticText* m_staticText2;
 		wxPanel* m_panel2;

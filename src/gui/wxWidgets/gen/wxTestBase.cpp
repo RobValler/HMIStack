@@ -49,23 +49,27 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	fgSizer4->Add( bSizer8, 5, wxEXPAND, 5 );
 
-	m_notebook1 = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
-	m_notebook1->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_notebook_main = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
+	m_notebook_main->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	m_panel1 = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel1 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel1->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText2 = new wxStaticText( m_panel1, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2 = new wxStaticText( m_panel1, wxID_ANY, _("Display"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2->Wrap( -1 );
+	m_staticText2->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 	bSizer2->Add( m_staticText2, 0, wxALL, 5 );
 
 
 	m_panel1->SetSizer( bSizer2 );
 	m_panel1->Layout();
 	bSizer2->Fit( m_panel1 );
-	m_notebook1->AddPage( m_panel1, _("a page"), true );
-	m_panel2 = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_notebook_main->AddPage( m_panel1, _("Display"), true );
+	m_panel2 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 
@@ -73,8 +77,8 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel2->SetSizer( bSizer3 );
 	m_panel2->Layout();
 	bSizer3->Fit( m_panel2 );
-	m_notebook1->AddPage( m_panel2, _("a page"), false );
-	m_panel3 = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_notebook_main->AddPage( m_panel2, _("Settings"), false );
+	m_panel3 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 
@@ -82,9 +86,9 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel3->SetSizer( bSizer4 );
 	m_panel3->Layout();
 	bSizer4->Fit( m_panel3 );
-	m_notebook1->AddPage( m_panel3, _("a page"), false );
+	m_notebook_main->AddPage( m_panel3, _("Something else"), false );
 
-	fgSizer4->Add( m_notebook1, 5, wxEXPAND | wxALL, 5 );
+	fgSizer4->Add( m_notebook_main, 5, wxEXPAND | wxALL, 5 );
 
 
 	bSizer1->Add( fgSizer4, 5, wxEXPAND, 5 );

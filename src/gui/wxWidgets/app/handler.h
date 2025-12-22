@@ -12,8 +12,6 @@
 
 #include "gui_hndl_types.h"
 
-#include <memory>
-
 class MyApp;
 
 class CHandler
