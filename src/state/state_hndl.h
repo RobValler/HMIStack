@@ -14,11 +14,6 @@
 
 #include <thread>
 #include <atomic>
-#include <functional>
-
-
-// forwarding
-class SMsgHndlParm;
 
 class CStateHndl
 {

@@ -50,7 +50,7 @@
       <property name="minimum_size">400,350</property>
       <property name="name">wxTestForm</property>
       <property name="pos"></property>
-      <property name="size">1024,768</property>
+      <property name="size">1440,1024</property>
       <property name="style">wxDEFAULT_FRAME_STYLE</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title"></property>
@@ -67,7 +67,7 @@
         <property name="drag_accept_files">0</property>
         <property name="enabled">1</property>
         <property name="fg"></property>
-        <property name="font"></property>
+        <property name="font">,90,400,14,70,0</property>
         <property name="hidden">0</property>
         <property name="id">wxID_ANY</property>
         <property name="maximum_size"></property>
@@ -82,11 +82,11 @@
         <property name="window_extra_style"></property>
         <property name="window_name"></property>
         <property name="window_style"></property>
-        <object class="wxMenu" expanded="true">
+        <object class="wxMenu" expanded="false">
           <property name="label">Menu</property>
           <property name="name">Menu</property>
           <property name="permission">protected</property>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -100,11 +100,11 @@
             <property name="unchecked_bitmap"></property>
           </object>
         </object>
-        <object class="wxMenu" expanded="true">
+        <object class="wxMenu" expanded="false">
           <property name="label">File</property>
           <property name="name">file</property>
           <property name="permission">protected</property>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -117,7 +117,7 @@
             <property name="shortcut"></property>
             <property name="unchecked_bitmap"></property>
           </object>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -130,7 +130,7 @@
             <property name="shortcut"></property>
             <property name="unchecked_bitmap"></property>
           </object>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -144,11 +144,11 @@
             <property name="unchecked_bitmap"></property>
           </object>
         </object>
-        <object class="wxMenu" expanded="true">
+        <object class="wxMenu" expanded="false">
           <property name="label">About</property>
           <property name="name">about</property>
           <property name="permission">protected</property>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -161,7 +161,7 @@
             <property name="shortcut"></property>
             <property name="unchecked_bitmap"></property>
           </object>
-          <object class="wxMenuItem" expanded="true">
+          <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
@@ -176,7 +176,7 @@
           </object>
         </object>
       </object>
-      <object class="wxBoxSizer" expanded="true">
+      <object class="wxBoxSizer" expanded="false">
         <property name="minimum_size">-1,-1</property>
         <property name="name">bSizer1</property>
         <property name="orient">wxVERTICAL</property>
@@ -302,7 +302,7 @@
             <property name="window_style"></property>
           </object>
         </object>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">5</property>
@@ -729,7 +729,7 @@
                 <property name="enabled">1</property>
                 <property name="fg"></property>
                 <property name="floatable">1</property>
-                <property name="font">,90,400,15,70,0</property>
+                <property name="font">,90,400,16,70,0</property>
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
@@ -945,7 +945,7 @@
                 <object class="notebookpage" expanded="false">
                   <property name="bitmap"></property>
                   <property name="label">Upload</property>
-                  <property name="select">1</property>
+                  <property name="select">0</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -1032,7 +1032,7 @@
                           <property name="enabled">1</property>
                           <property name="fg"></property>
                           <property name="floatable">1</property>
-                          <property name="font">,90,400,22,70,0</property>
+                          <property name="font">,90,400,20,70,0</property>
                           <property name="gripper">0</property>
                           <property name="hidden">0</property>
                           <property name="id">wxID_ANY</property>
@@ -1130,7 +1130,7 @@
                 <object class="notebookpage" expanded="false">
                   <property name="bitmap"></property>
                   <property name="label">Attributes</property>
-                  <property name="select">0</property>
+                  <property name="select">1</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -1380,7 +1380,7 @@
             </object>
           </object>
         </object>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>

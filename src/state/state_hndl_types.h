@@ -15,14 +15,12 @@
 #include <memory>
 
 class CMsgHndl;
-//class CNetworkHndl;
 class CAgentHndl;
 class IGuiHndl;
 class COperationHndl;
 
 struct SStateHndlParm {
     std::shared_ptr<CMsgHndl> mpMsgHndl;
-    // std::shared_ptr<CNetworkHndl> mpNetWorkHndl;
     std::shared_ptr<CAgentHndl> mpAgentHndl;
     std::shared_ptr<IGuiHndl> mpGuiHndl;
     std::shared_ptr<COperationHndl> mpOperationHndl;

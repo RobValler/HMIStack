@@ -33,7 +33,11 @@ enum class EHMI_FW: std::uint8_t {
 struct SCmdLineParm {
     int m_argc;
     char **m_argv;
+};
+
+struct CoreParms {
     EHMI_FW hmi_framework{EHMI_FW::ENone};
+    SCmdLineParm cmd;
 };
 
 struct SCBFuncParms {

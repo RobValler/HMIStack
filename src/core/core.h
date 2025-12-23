@@ -16,6 +16,7 @@
 
 // forward declaration
 struct SPImpl;
+class CoreParms;
 class CStateHndl;
 
 enum class ECoreStatus : unsigned int {
@@ -28,7 +29,7 @@ enum class ECoreStatus : unsigned int {
 
 class CCore {
 public:
-    CCore(const SCmdLineParm& parm);
+    CCore(const CoreParms& parm);
     ~CCore();
 
     int Start();
@@ -39,7 +40,7 @@ private:
 
     void StatusCallback(const SCBFuncParms& data);
     ECoreStatus mCurrentCoreStatus{ECoreStatus::EUnknown};
-    SCmdLineParm mParm;
+    CoreParms mParm;
     std::unique_ptr<SPImpl> mpPImpl;
     std::unique_ptr<CStateHndl> mpStateMachine;
 };

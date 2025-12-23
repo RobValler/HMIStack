@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
     // POSIIX signal handling
     std::signal(SIGINT, signal_handler);   // CTRL+C
 
-    SCmdLineParm parm;
-    parm.m_argc = argc;
-    parm.m_argv = argv;
+    CoreParms parm;
+    parm.cmd.m_argc = argc;
+    parm.cmd.m_argv = argv;
     parm.hmi_framework = EHMI_FW::EwxWidget;
 
     CCore test(parm);

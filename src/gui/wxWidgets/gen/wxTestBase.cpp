@@ -15,6 +15,8 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	m_menubar = new wxMenuBar( 0 );
+	m_menubar->SetFont( wxFont( 14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 	Menu = new wxMenu();
 	wxMenuItem* exit;
 	exit = new wxMenuItem( Menu, ID_EXIT, wxString( _("Exit") ) , wxEmptyString, wxITEM_NORMAL );
@@ -92,7 +94,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer4->Add( bSizer8, 5, wxEXPAND, 5 );
 
 	m_notebook_main = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
-	m_notebook_main->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_notebook_main->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	m_panel_download = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_panel_download->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
@@ -120,7 +122,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	m_staticText4 = new wxStaticText( m_panel_upload, wxID_ANY, _("Upload"), wxDefaultPosition, wxSize( 200,40 ), 0 );
 	m_staticText4->Wrap( -1 );
-	m_staticText4->SetFont( wxFont( 22, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_staticText4->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	bSizer3->Add( m_staticText4, 0, wxALL, 5 );
 
@@ -131,7 +133,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_upload->SetSizer( bSizer3 );
 	m_panel_upload->Layout();
 	bSizer3->Fit( m_panel_upload );
-	m_notebook_main->AddPage( m_panel_upload, _("Upload"), true );
+	m_notebook_main->AddPage( m_panel_upload, _("Upload"), false );
 	m_panel_attribute = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
@@ -152,7 +154,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_attribute->SetSizer( bSizer4 );
 	m_panel_attribute->Layout();
 	bSizer4->Fit( m_panel_attribute );
-	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), false );
+	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), true );
 
 	fgSizer4->Add( m_notebook_main, 5, wxEXPAND | wxALL, 5 );
 

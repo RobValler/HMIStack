@@ -28,7 +28,7 @@ struct SPImpl {
     std::shared_ptr<COperationHndl> mpOperationHndl;
 };
 
-CCore::CCore(const SCmdLineParm& parm)
+CCore::CCore(const CoreParms& parm)
     : mParm(parm)
     , mpPImpl(std::make_unique<SPImpl>())
 {
@@ -39,20 +39,20 @@ CCore::CCore(const SCmdLineParm& parm)
             break;
         break;
         case EHMI_FW::EQt:
-            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlQt>(mParm);
+            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlQt>(mParm.cmd);
             break;
         case EHMI_FW::EImGui:
-            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDearImGui>(mParm);
+            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDearImGui>(mParm.cmd);
             break;
         case EHMI_FW::EwxWidget: {
             SGuiHndlTypes local_gui_parms;
-            local_gui_parms.cmd_line_parm = mParm;
+            local_gui_parms.cmd_line_parm = mParm.cmd;
             local_gui_parms.cb_func = [this](const SCBFuncParms& p){ this->StatusCallback(p); };
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlWxWidgets>(local_gui_parms);
             break;
         }
         case EHMI_FW::EDummy:
-            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDmy>(mParm);
+            mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlDmy>(mParm.cmd);
             break;
         default:
             break;
