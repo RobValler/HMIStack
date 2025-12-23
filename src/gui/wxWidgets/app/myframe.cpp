@@ -20,27 +20,42 @@ MyFrame::MyFrame(const CBFunc& func)
     // configuration
     Bind(wxEVT_CLOSE_WINDOW, &MyFrame::OnClose, this);
 
-
-
     // Set-ups
-    int width = 24;
-    int height = 24;
+    int note_width = 25;
+    int note_height = 25;
+    int btn_width = 50;
+    int btn_height = 50;
 
-    wxImage img;
-    img.LoadFile("notepad_icon.png", wxBITMAP_TYPE_PNG);
-    wxBitmap bmp1(img.Scale(width, height, wxIMAGE_QUALITY_HIGH));
-    img.LoadFile("web_icon.png", wxBITMAP_TYPE_PNG);
-    wxBitmap bmp2(img.Scale(width, height, wxIMAGE_QUALITY_HIGH));
-    wxImageList* imageList = new wxImageList(width, height, true);
-    int icon1 = imageList->Add(bmp1);
-    int icon2 = imageList->Add(bmp2);
-
-    // Assign image list to notebook
+    wxImageList* imageList = new wxImageList(note_width, note_height, true);
     m_notebook_main->AssignImageList(imageList);
-    m_notebook_main->SetPageImage(0, icon1);
-    m_notebook_main->SetPageImage(1, icon2);
 
+    auto load_file = [&](std::string file_name, int w, int h) {
 
+        int icon;
+        wxImage img;
+        img.LoadFile(file_name, wxBITMAP_TYPE_PNG);
+
+        // check and initialise alpha
+        if (!img.HasAlpha()) {
+            img.InitAlpha();
+        }
+
+        wxBitmap bmp(img.Scale(w, h, wxIMAGE_QUALITY_HIGH));
+        return bmp;
+    };
+
+    m_notebook_main->SetPageImage(0, imageList->Add(load_file("download.png", note_width, note_height)));
+    m_notebook_main->SetPageImage(1, imageList->Add(load_file("upload.png", note_width, note_height)));
+    m_notebook_main->SetPageImage(2, imageList->Add(load_file("tag.png", note_width, note_height)));
+
+    m_button_one->SetBitmap(load_file("play-button.png", btn_width, btn_height));
+    m_button_two->SetBitmap(load_file("fast-forward.png", btn_width, btn_height));
+    m_button_three->SetBitmap(load_file("rewind-button.png", btn_width, btn_height));
+    m_button_four->SetBitmap(load_file("pause.png", btn_width, btn_height));
+    m_button_five->SetBitmap(load_file("on-off-button.png", btn_width, btn_height));
+
+    m_hyperlink->SetLabel("www.flaticon.com");
+    m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
 
 }
 

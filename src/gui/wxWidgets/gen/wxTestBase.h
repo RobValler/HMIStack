@@ -17,12 +17,14 @@
 #include <wx/settings.h>
 #include <wx/string.h>
 #include <wx/stattext.h>
+#include <wx/statline.h>
 #include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
 #include <wx/sizer.h>
 #include <wx/panel.h>
+#include <wx/hyperlink.h>
 #include <wx/notebook.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
@@ -37,18 +39,28 @@ class wxTestForm : public wxFrame
 	private:
 
 	protected:
-		wxMenuBar* m_menubar2;
+		wxMenuBar* m_menubar;
 		wxStaticText* m_staticText1;
-		wxButton* m_button8;
-		wxButton* m_button7;
-		wxButton* m_button6;
+		wxStaticLine* m_staticline1;
+		wxButton* m_button_one;
+		wxButton* m_button_two;
+		wxButton* m_button_three;
+		wxButton* m_button_four;
+		wxButton* m_button_five;
 		wxNotebook* m_notebook_main;
-		wxPanel* m_panel1;
+		wxPanel* m_panel_download;
 		wxStaticText* m_staticText2;
-		wxPanel* m_panel2;
-		wxPanel* m_panel3;
+		wxStaticLine* m_staticline3;
+		wxPanel* m_panel_upload;
+		wxStaticText* m_staticText4;
+		wxStaticLine* m_staticline5;
+		wxPanel* m_panel_attribute;
+		wxStaticText* m_staticText3;
+		wxStaticLine* m_staticline4;
+		wxHyperlinkCtrl* m_hyperlink;
 		wxButton* m_button1;
-		wxButton* m_button22;
+		wxButton* m_button2;
+		wxStaticLine* m_staticline6;
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class

@@ -126,10 +126,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 #COPY FILES
 file(GLOB IMG_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/gui/wxWidgets/gen/*.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/gui/wxWidgets/gen/PNG/*.png
 )
 file(COPY ${IMG_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
-
 
 if(TEST_ENABLE)
 ################### TEST ###################

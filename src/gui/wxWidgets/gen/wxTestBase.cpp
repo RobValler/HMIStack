@@ -14,8 +14,8 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->SetSizeHints( wxSize( 400,350 ), wxDefaultSize );
 	this->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	m_menubar2 = new wxMenuBar( 0 );
-	this->SetMenuBar( m_menubar2 );
+	m_menubar = new wxMenuBar( 0 );
+	this->SetMenuBar( m_menubar );
 
 	wxBoxSizer* bSizer1;
 	bSizer1 = new wxBoxSizer( wxVERTICAL );
@@ -25,6 +25,9 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_staticText1->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	bSizer1->Add( m_staticText1, 0, wxALL|wxEXPAND, 5 );
+
+	m_staticline1 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer1->Add( m_staticline1, 0, wxEXPAND | wxALL, 5 );
 
 	wxFlexGridSizer* fgSizer4;
 	fgSizer4 = new wxFlexGridSizer( 1, 2, 0, 0 );
@@ -37,14 +40,20 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
 
 	bSizer8->SetMinSize( wxSize( 150,-1 ) );
-	m_button8 = new wxButton( this, wxID_ANY, _("MyButton"), wxPoint( -1,-1 ), wxSize( -1,80 ), 0 );
-	bSizer8->Add( m_button8, 0, wxALL|wxEXPAND, 5 );
+	m_button_one = new wxButton( this, wxID_ANY, wxEmptyString, wxPoint( -1,-1 ), wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button_one, 0, wxALL|wxEXPAND, 5 );
 
-	m_button7 = new wxButton( this, wxID_ANY, _("MyButton"), wxDefaultPosition, wxSize( -1,80 ), 0 );
-	bSizer8->Add( m_button7, 0, wxALL|wxEXPAND, 5 );
+	m_button_two = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button_two, 0, wxALL|wxEXPAND, 5 );
 
-	m_button6 = new wxButton( this, wxID_ANY, _("MyButton"), wxDefaultPosition, wxSize( -1,80 ), 0 );
-	bSizer8->Add( m_button6, 0, wxALL|wxEXPAND, 5 );
+	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button_three, 0, wxALL|wxEXPAND, 5 );
+
+	m_button_four = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button_four, 0, wxALL|wxEXPAND, 5 );
+
+	m_button_five = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	bSizer8->Add( m_button_five, 0, wxALL|wxEXPAND, 5 );
 
 
 	fgSizer4->Add( bSizer8, 5, wxEXPAND, 5 );
@@ -52,41 +61,65 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_notebook_main = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
 	m_notebook_main->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	m_panel1 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel1->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_panel_download = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel_download->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText2 = new wxStaticText( m_panel1, wxID_ANY, _("Display"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2 = new wxStaticText( m_panel_download, wxID_ANY, _("Download"), wxDefaultPosition, wxSize( 200,40 ), 0 );
 	m_staticText2->Wrap( -1 );
 	m_staticText2->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	bSizer2->Add( m_staticText2, 0, wxALL, 5 );
 
+	m_staticline3 = new wxStaticLine( m_panel_download, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer2->Add( m_staticline3, 0, wxEXPAND | wxALL, 5 );
 
-	m_panel1->SetSizer( bSizer2 );
-	m_panel1->Layout();
-	bSizer2->Fit( m_panel1 );
-	m_notebook_main->AddPage( m_panel1, _("Display"), true );
-	m_panel2 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+
+	m_panel_download->SetSizer( bSizer2 );
+	m_panel_download->Layout();
+	bSizer2->Fit( m_panel_download );
+	m_notebook_main->AddPage( m_panel_download, _("Download"), false );
+	m_panel_upload = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 
+	m_staticText4 = new wxStaticText( m_panel_upload, wxID_ANY, _("Upload"), wxDefaultPosition, wxSize( 200,40 ), 0 );
+	m_staticText4->Wrap( -1 );
+	m_staticText4->SetFont( wxFont( 22, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	m_panel2->SetSizer( bSizer3 );
-	m_panel2->Layout();
-	bSizer3->Fit( m_panel2 );
-	m_notebook_main->AddPage( m_panel2, _("Settings"), false );
-	m_panel3 = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	bSizer3->Add( m_staticText4, 0, wxALL, 5 );
+
+	m_staticline5 = new wxStaticLine( m_panel_upload, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer3->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
+
+
+	m_panel_upload->SetSizer( bSizer3 );
+	m_panel_upload->Layout();
+	bSizer3->Fit( m_panel_upload );
+	m_notebook_main->AddPage( m_panel_upload, _("Upload"), true );
+	m_panel_attribute = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 
+	m_staticText3 = new wxStaticText( m_panel_attribute, wxID_ANY, _("Attribute"), wxDefaultPosition, wxSize( 200,40 ), 0 );
+	m_staticText3->Wrap( -1 );
+	m_staticText3->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	m_panel3->SetSizer( bSizer4 );
-	m_panel3->Layout();
-	bSizer4->Fit( m_panel3 );
-	m_notebook_main->AddPage( m_panel3, _("Something else"), false );
+	bSizer4->Add( m_staticText3, 0, wxALL, 5 );
+
+	m_staticline4 = new wxStaticLine( m_panel_attribute, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer4->Add( m_staticline4, 0, wxEXPAND | wxALL, 5 );
+
+	m_hyperlink = new wxHyperlinkCtrl( m_panel_attribute, wxID_ANY, _("link"), wxT("--"), wxDefaultPosition, wxDefaultSize, wxHL_DEFAULT_STYLE );
+	bSizer4->Add( m_hyperlink, 0, wxALL, 5 );
+
+
+	m_panel_attribute->SetSizer( bSizer4 );
+	m_panel_attribute->Layout();
+	bSizer4->Fit( m_panel_attribute );
+	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), false );
 
 	fgSizer4->Add( m_notebook_main, 5, wxEXPAND | wxALL, 5 );
 
@@ -101,22 +134,27 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_button1 = new wxButton( this, wxID_ANY, _("Button One"), wxDefaultPosition, wxSize( 150,80 ), 0 );
 	fgSizer1->Add( m_button1, 0, wxALL, 5 );
 
-	m_button22 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 150,80 ), 0 );
-	fgSizer1->Add( m_button22, 0, wxALL, 5 );
+	m_button2 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 150,80 ), 0 );
+	fgSizer1->Add( m_button2, 0, wxALL, 5 );
 
 
 	bSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
+
+	m_staticline6 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer1->Add( m_staticline6, 0, wxEXPAND | wxALL, 5 );
 
 
 	this->SetSizer( bSizer1 );
 	this->Layout();
 	m_statusBar1 = this->CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
+	m_statusBar1->SetFont( wxFont( 25, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 
 	this->Centre( wxBOTH );
 
 	// Connect Events
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
-	m_button22->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
+	m_button2->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 }
 
 wxTestForm::~wxTestForm()
