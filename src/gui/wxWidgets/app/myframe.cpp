@@ -15,7 +15,7 @@ MyFrame::MyFrame(const CBFunc& func)
     : wxTestForm(nullptr, wxID_ANY, "Hello World")
     , mCBFunc(func) {
 
-    std::cout << "----> MyFrame ctor called" << std::endl;
+    SetMenuBar(m_menubar);
 
     // configuration
     Bind(wxEVT_CLOSE_WINDOW, &MyFrame::OnClose, this);
@@ -57,6 +57,7 @@ MyFrame::MyFrame(const CBFunc& func)
     m_hyperlink->SetLabel("www.flaticon.com");
     m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
 
+    std::cout << "----> MyFrame ctor called" << std::endl;
 }
 
 MyFrame::~MyFrame() {

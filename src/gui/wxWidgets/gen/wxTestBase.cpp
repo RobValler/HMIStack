@@ -15,6 +15,39 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	m_menubar = new wxMenuBar( 0 );
+	Menu = new wxMenu();
+	wxMenuItem* exit;
+	exit = new wxMenuItem( Menu, ID_EXIT, wxString( _("Exit") ) , wxEmptyString, wxITEM_NORMAL );
+	Menu->Append( exit );
+
+	m_menubar->Append( Menu, _("Menu") );
+
+	file = new wxMenu();
+	wxMenuItem* Load;
+	Load = new wxMenuItem( file, wxID_ANY, wxString( _("Load") ) , wxEmptyString, wxITEM_NORMAL );
+	file->Append( Load );
+
+	wxMenuItem* save;
+	save = new wxMenuItem( file, ID_SAVE, wxString( _("Save") ) , wxEmptyString, wxITEM_NORMAL );
+	file->Append( save );
+
+	wxMenuItem* defaultFile;
+	defaultFile = new wxMenuItem( file, ID_DEFAULT_FILE, wxString( _("Default file") ) , wxEmptyString, wxITEM_NORMAL );
+	file->Append( defaultFile );
+
+	m_menubar->Append( file, _("File") );
+
+	about = new wxMenu();
+	wxMenuItem* preferences;
+	preferences = new wxMenuItem( about, ID_PREFERENCES, wxString( _("Preferences") ) , wxEmptyString, wxITEM_NORMAL );
+	about->Append( preferences );
+
+	wxMenuItem* help;
+	help = new wxMenuItem( about, ID_HELP, wxString( _("Help") ) , wxEmptyString, wxITEM_NORMAL );
+	about->Append( help );
+
+	m_menubar->Append( about, _("About") );
+
 	this->SetMenuBar( m_menubar );
 
 	wxBoxSizer* bSizer1;
@@ -132,9 +165,13 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
 	m_button1 = new wxButton( this, wxID_ANY, _("Button One"), wxDefaultPosition, wxSize( 150,80 ), 0 );
+	m_button1->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 	fgSizer1->Add( m_button1, 0, wxALL, 5 );
 
 	m_button2 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 150,80 ), 0 );
+	m_button2->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
 	fgSizer1->Add( m_button2, 0, wxALL, 5 );
 
 
