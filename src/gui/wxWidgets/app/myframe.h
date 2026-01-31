@@ -22,7 +22,9 @@ public:
     ~MyFrame();
 
 private:
+    void Btn1_Click( wxCommandEvent& event );
     void OnClose(wxCloseEvent& event);
+    void OnItemActivated(wxDataViewEvent& event);
 
     CBFunc mCBFunc;
 };

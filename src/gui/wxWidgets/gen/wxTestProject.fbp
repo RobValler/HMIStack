@@ -60,7 +60,7 @@
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
-      <object class="wxMenuBar" expanded="true">
+      <object class="wxMenuBar" expanded="false">
         <property name="bg"></property>
         <property name="context_help"></property>
         <property name="context_menu">1</property>
@@ -176,7 +176,7 @@
           </object>
         </object>
       </object>
-      <object class="wxBoxSizer" expanded="false">
+      <object class="wxBoxSizer" expanded="true">
         <property name="minimum_size">-1,-1</property>
         <property name="name">bSizer1</property>
         <property name="orient">wxVERTICAL</property>
@@ -302,11 +302,11 @@
             <property name="window_style"></property>
           </object>
         </object>
-        <object class="sizeritem" expanded="false">
+        <object class="sizeritem" expanded="true">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">5</property>
-          <object class="wxFlexGridSizer" expanded="false">
+          <object class="wxFlexGridSizer" expanded="true">
             <property name="cols">2</property>
             <property name="flexible_direction">wxBOTH</property>
             <property name="growablecols">1</property>
@@ -699,11 +699,11 @@
                 </object>
               </object>
             </object>
-            <object class="sizeritem" expanded="false">
+            <object class="sizeritem" expanded="true">
               <property name="border">5</property>
               <property name="flag">wxEXPAND | wxALL</property>
               <property name="proportion">5</property>
-              <object class="wxNotebook" expanded="false">
+              <object class="wxNotebook" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -757,11 +757,11 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Download</property>
-                  <property name="select">0</property>
-                  <object class="wxPanel" expanded="false">
+                  <property name="select">1</property>
+                  <object class="wxPanel" expanded="true">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
                     <property name="RightDockable">1</property>
@@ -813,7 +813,7 @@
                     <property name="window_extra_style"></property>
                     <property name="window_name"></property>
                     <property name="window_style">wxTAB_TRAVERSAL</property>
-                    <object class="wxBoxSizer" expanded="false">
+                    <object class="wxBoxSizer" expanded="true">
                       <property name="minimum_size"></property>
                       <property name="name">bSizer2</property>
                       <property name="orient">wxVERTICAL</property>
@@ -933,6 +933,34 @@
                           <property name="style">wxLI_HORIZONTAL</property>
                           <property name="subclass">; ; forward_declare</property>
                           <property name="toolbar_pane">0</property>
+                          <property name="tooltip"></property>
+                          <property name="window_extra_style"></property>
+                          <property name="window_name"></property>
+                          <property name="window_style"></property>
+                        </object>
+                      </object>
+                      <object class="sizeritem" expanded="true">
+                        <property name="border">5</property>
+                        <property name="flag">wxALL</property>
+                        <property name="proportion">0</property>
+                        <object class="wxDataViewListCtrl" expanded="true">
+                          <property name="bg"></property>
+                          <property name="context_help"></property>
+                          <property name="context_menu">1</property>
+                          <property name="drag_accept_files">0</property>
+                          <property name="enabled">1</property>
+                          <property name="fg"></property>
+                          <property name="font">,90,400,16,70,0</property>
+                          <property name="hidden">0</property>
+                          <property name="id">wxID_ANY</property>
+                          <property name="maximum_size"></property>
+                          <property name="minimum_size"></property>
+                          <property name="name">m_dataViewListDownload</property>
+                          <property name="permission">protected</property>
+                          <property name="pos"></property>
+                          <property name="size">500,300</property>
+                          <property name="style">wxDV_ROW_LINES</property>
+                          <property name="subclass">; ; forward_declare</property>
                           <property name="tooltip"></property>
                           <property name="window_extra_style"></property>
                           <property name="window_name"></property>
@@ -1130,7 +1158,7 @@
                 <object class="notebookpage" expanded="false">
                   <property name="bitmap"></property>
                   <property name="label">Attributes</property>
-                  <property name="select">1</property>
+                  <property name="select">0</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>

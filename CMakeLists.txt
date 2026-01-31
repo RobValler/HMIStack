@@ -107,6 +107,8 @@ file(GLOB APP_CONFIG
     ${CMAKE_SOURCE_DIR}/README.md
     ${CMAKE_SOURCE_DIR}/conanfile.py
     ${CMAKE_SOURCE_DIR}/create.sh
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen/PNG/*.png
+    ${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen/*.fbp
 )
 
 add_executable(${PROJECT_NAME}

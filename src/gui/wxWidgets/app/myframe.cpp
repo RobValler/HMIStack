@@ -57,12 +57,59 @@ MyFrame::MyFrame(const CBFunc& func)
     m_hyperlink->SetLabel("www.flaticon.com");
     m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
 
+
+
+    // data list
+    m_dataViewListDownload->AppendTextColumn("Text", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendTextColumn("Number", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendProgressColumn("Progress", wxDATAVIEW_CELL_INERT, 150, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendIconTextColumn("Action",wxDATAVIEW_CELL_ACTIVATABLE, 50, wxALIGN_CENTER);
+    m_dataViewListDownload->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &MyFrame::OnItemActivated, this);
+
     std::cout << "----> MyFrame ctor called" << std::endl;
 }
 
 MyFrame::~MyFrame() {
 
     std::cout << "----> MyFrame dtor called" << std::endl;
+}
+
+void MyFrame::Btn1_Click( wxCommandEvent& event ) {
+
+    wxIcon icon = wxArtProvider::GetIcon(wxART_DELETE, wxART_OTHER, wxSize(30,30));
+    wxDataViewIconText iconText("", icon);
+    wxVariant value;
+    value << iconText;
+
+    m_dataViewListDownload->DeleteAllItems();
+
+    auto list_func = [&](std::string name,
+                         int data,
+                         int progress) {
+        wxVector<wxVariant> row;
+        row.push_back(name);
+        row.push_back(std::to_string(data));
+        row.push_back(progress);
+        row.push_back(value);
+        m_dataViewListDownload->AppendItem(row);
+    };
+
+    list_func("Cow", 1, 26);
+    list_func("Dog", 10, 60);
+    list_func("Cat", 24, 92);
+
+}
+
+void MyFrame::OnItemActivated(wxDataViewEvent& event)
+{
+    int row = m_dataViewListDownload->ItemToRow(event.GetItem());
+    int col = event.GetColumn();
+
+    if (col == 3)
+    {
+//        wxLogMessage("Button clicked on row %d", row);
+        m_dataViewListDownload->DeleteItem(row);
+    }
 }
 
 void MyFrame::OnClose(wxCloseEvent& event) {

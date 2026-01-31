@@ -23,6 +23,7 @@
 #include <wx/statline.h>
 #include <wx/button.h>
 #include <wx/sizer.h>
+#include <wx/dataview.h>
 #include <wx/panel.h>
 #include <wx/hyperlink.h>
 #include <wx/notebook.h>
@@ -63,6 +64,7 @@ class wxTestForm : public wxFrame
 		wxPanel* m_panel_download;
 		wxStaticText* m_staticText2;
 		wxStaticLine* m_staticline3;
+		wxDataViewListCtrl* m_dataViewListDownload;
 		wxPanel* m_panel_upload;
 		wxStaticText* m_staticText4;
 		wxStaticLine* m_staticline5;

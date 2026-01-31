@@ -111,11 +111,16 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_staticline3 = new wxStaticLine( m_panel_download, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizer2->Add( m_staticline3, 0, wxEXPAND | wxALL, 5 );
 
+	m_dataViewListDownload = new wxDataViewListCtrl( m_panel_download, wxID_ANY, wxDefaultPosition, wxSize( 500,300 ), wxDV_ROW_LINES );
+	m_dataViewListDownload->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	bSizer2->Add( m_dataViewListDownload, 0, wxALL, 5 );
+
 
 	m_panel_download->SetSizer( bSizer2 );
 	m_panel_download->Layout();
 	bSizer2->Fit( m_panel_download );
-	m_notebook_main->AddPage( m_panel_download, _("Download"), false );
+	m_notebook_main->AddPage( m_panel_download, _("Download"), true );
 	m_panel_upload = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
@@ -154,7 +159,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_attribute->SetSizer( bSizer4 );
 	m_panel_attribute->Layout();
 	bSizer4->Fit( m_panel_attribute );
-	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), true );
+	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), false );
 
 	fgSizer4->Add( m_notebook_main, 5, wxEXPAND | wxALL, 5 );
 
