@@ -79,6 +79,7 @@ class wxTestForm : public wxFrame
 
 		// Virtual event handlers, override them in your derived class
 		virtual void Btn1_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Btn2_Click( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:

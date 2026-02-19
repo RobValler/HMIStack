@@ -114,7 +114,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_dataViewListDownload = new wxDataViewListCtrl( m_panel_download, wxID_ANY, wxDefaultPosition, wxSize( 500,300 ), wxDV_ROW_LINES );
 	m_dataViewListDownload->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	bSizer2->Add( m_dataViewListDownload, 0, wxALL, 5 );
+	bSizer2->Add( m_dataViewListDownload, 0, wxALL|wxEXPAND, 5 );
 
 
 	m_panel_download->SetSizer( bSizer2 );
@@ -198,7 +198,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	// Connect Events
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
-	m_button2->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
+	m_button2->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn2_Click ), NULL, this );
 }
 
 wxTestForm::~wxTestForm()

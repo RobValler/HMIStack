@@ -11,6 +11,11 @@
 
 #include <iostream>
 
+namespace {
+    constexpr int note_width = 25;
+    constexpr int note_height = 25;
+}
+
 MyFrame::MyFrame(const CBFunc& func)
     : wxTestForm(nullptr, wxID_ANY, "Hello World")
     , mCBFunc(func) {
@@ -21,28 +26,12 @@ MyFrame::MyFrame(const CBFunc& func)
     Bind(wxEVT_CLOSE_WINDOW, &MyFrame::OnClose, this);
 
     // Set-ups
-    int note_width = 25;
-    int note_height = 25;
+
     int btn_width = 50;
     int btn_height = 50;
 
     wxImageList* imageList = new wxImageList(note_width, note_height, true);
     m_notebook_main->AssignImageList(imageList);
-
-    auto load_file = [&](std::string file_name, int w, int h) {
-
-        int icon;
-        wxImage img;
-        img.LoadFile(file_name, wxBITMAP_TYPE_PNG);
-
-        // check and initialise alpha
-        if (!img.HasAlpha()) {
-            img.InitAlpha();
-        }
-
-        wxBitmap bmp(img.Scale(w, h, wxIMAGE_QUALITY_HIGH));
-        return bmp;
-    };
 
     m_notebook_main->SetPageImage(0, imageList->Add(load_file("download.png", note_width, note_height)));
     m_notebook_main->SetPageImage(1, imageList->Add(load_file("upload.png", note_width, note_height)));
@@ -100,6 +89,30 @@ void MyFrame::Btn1_Click( wxCommandEvent& event ) {
 
 }
 
+
+void MyFrame::Btn2_Click( wxCommandEvent& event ) {
+
+    if(mSwitch) {
+
+        m_notebook_main->RemovePage(1);
+        m_notebook_main->RemovePage(1);
+
+        mSwitch = false;
+    } else {
+
+        m_notebook_main->AddPage(m_panel_upload, "Upload");
+        m_notebook_main->AddPage(m_panel_attribute, "Attributes");
+
+        wxImageList* imageList = new wxImageList(note_width, note_height, true);
+        m_notebook_main->AssignImageList(imageList);
+        m_notebook_main->SetPageImage(1, imageList->Add(load_file("upload.png", note_width, note_height)));
+        m_notebook_main->SetPageImage(2, imageList->Add(load_file("tag.png", note_width, note_height)));
+
+        mSwitch = true;
+    }
+
+}
+
 void MyFrame::OnItemActivated(wxDataViewEvent& event)
 {
     int row = m_dataViewListDownload->ItemToRow(event.GetItem());
@@ -123,3 +136,17 @@ void MyFrame::OnClose(wxCloseEvent& event) {
     mCBFunc(p);
 }
 
+wxBitmap MyFrame::load_file(std::string file_name, int w, int h) {
+
+    int icon;
+    wxImage img;
+    img.LoadFile(file_name, wxBITMAP_TYPE_PNG);
+
+    // check and initialise alpha
+    if (!img.HasAlpha()) {
+        img.InitAlpha();
+    }
+
+    wxBitmap bmp(img.Scale(w, h, wxIMAGE_QUALITY_HIGH));
+    return bmp;
+};

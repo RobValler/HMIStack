@@ -941,7 +941,7 @@
                       </object>
                       <object class="sizeritem" expanded="true">
                         <property name="border">5</property>
-                        <property name="flag">wxALL</property>
+                        <property name="flag">wxALL|wxEXPAND</property>
                         <property name="proportion">0</property>
                         <object class="wxDataViewListCtrl" expanded="true">
                           <property name="bg"></property>
@@ -1571,7 +1571,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <event name="OnButtonClick">Btn1_Click</event>
+                <event name="OnButtonClick">Btn2_Click</event>
               </object>
             </object>
           </object>

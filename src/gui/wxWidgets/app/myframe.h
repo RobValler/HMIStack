@@ -22,11 +22,15 @@ public:
     ~MyFrame();
 
 private:
-    void Btn1_Click( wxCommandEvent& event );
+    void Btn1_Click( wxCommandEvent& event ) override;
+    void Btn2_Click( wxCommandEvent& event ) override;
     void OnClose(wxCloseEvent& event);
     void OnItemActivated(wxDataViewEvent& event);
 
+    wxBitmap load_file(std::string file_name, int w, int h);
     CBFunc mCBFunc;
+
+    bool mSwitch{true};
 };
 
 #endif // MYFRAME__H
