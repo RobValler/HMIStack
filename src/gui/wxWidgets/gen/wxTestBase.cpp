@@ -82,6 +82,8 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	bSizer8->Add( m_button_two, 0, wxALL|wxEXPAND, 5 );
 
 	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_three->SetForegroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
+
 	bSizer8->Add( m_button_three, 0, wxALL|wxEXPAND, 5 );
 
 	m_button_four = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
@@ -120,7 +122,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_download->SetSizer( bSizer2 );
 	m_panel_download->Layout();
 	bSizer2->Fit( m_panel_download );
-	m_notebook_main->AddPage( m_panel_download, _("Download"), true );
+	m_notebook_main->AddPage( m_panel_download, _("Download"), false );
 	m_panel_upload = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
@@ -160,6 +162,18 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_attribute->Layout();
 	bSizer4->Fit( m_panel_attribute );
 	m_notebook_main->AddPage( m_panel_attribute, _("Attributes"), false );
+	m_panel_components = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxGridSizer* gSizerComponents;
+	gSizerComponents = new wxGridSizer( 5, 5, 0, 0 );
+
+	m_button_component_template = new wxButton( m_panel_components, wxID_ANY, _("MyButton"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizerComponents->Add( m_button_component_template, 0, wxALL|wxEXPAND, 5 );
+
+
+	m_panel_components->SetSizer( gSizerComponents );
+	m_panel_components->Layout();
+	gSizerComponents->Fit( m_panel_components );
+	m_notebook_main->AddPage( m_panel_components, _("Components"), true );
 
 	fgSizer4->Add( m_notebook_main, 5, wxEXPAND | wxALL, 5 );
 
@@ -197,10 +211,19 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 
 	// Connect Events
+	m_button_component_template->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::MyButtonTestBtn ), NULL, this );
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn1_Click ), NULL, this );
 	m_button2->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( wxTestForm::Btn2_Click ), NULL, this );
 }
 
 wxTestForm::~wxTestForm()
+{
+}
+
+MyPanel2::MyPanel2( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name ) : wxPanel( parent, id, pos, size, style, name )
+{
+}
+
+MyPanel2::~MyPanel2()
 {
 }

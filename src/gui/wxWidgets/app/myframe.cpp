@@ -9,7 +9,10 @@
 
 #include "myframe.h"
 
+#include "custom_button.h"
+
 #include <iostream>
+#include <chrono>
 
 namespace {
     constexpr int note_width = 25;
@@ -47,7 +50,6 @@ MyFrame::MyFrame(const CBFunc& func)
     m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
 
 
-
     // data list
     m_dataViewListDownload->AppendTextColumn("Text", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
     m_dataViewListDownload->AppendTextColumn("Number", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
@@ -55,11 +57,17 @@ MyFrame::MyFrame(const CBFunc& func)
     m_dataViewListDownload->AppendIconTextColumn("Action",wxDATAVIEW_CELL_ACTIVATABLE, 50, wxALIGN_CENTER);
     m_dataViewListDownload->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &MyFrame::OnItemActivated, this);
 
+    m_button_component_template->Hide();
+
+
+    tFunc = std::thread(&MyFrame::ThreadFunc, this);
     std::cout << "----> MyFrame ctor called" << std::endl;
 }
 
 MyFrame::~MyFrame() {
 
+    mAppExitCalled = true;
+    tFunc.join();
     std::cout << "----> MyFrame dtor called" << std::endl;
 }
 
@@ -86,6 +94,7 @@ void MyFrame::Btn1_Click( wxCommandEvent& event ) {
     list_func("Cow", 1, 26);
     list_func("Dog", 10, 60);
     list_func("Cat", 24, 92);
+    list_func("BearManCowPig", 24, 92);
 
 }
 
@@ -100,8 +109,8 @@ void MyFrame::Btn2_Click( wxCommandEvent& event ) {
         mSwitch = false;
     } else {
 
-        m_notebook_main->AddPage(m_panel_upload, "Upload");
-        m_notebook_main->AddPage(m_panel_attribute, "Attributes");
+        m_notebook_main->InsertPage(1, m_panel_upload, "Upload");
+        m_notebook_main->InsertPage(2, m_panel_attribute, "Attributes");
 
         wxImageList* imageList = new wxImageList(note_width, note_height, true);
         m_notebook_main->AssignImageList(imageList);
@@ -150,3 +159,34 @@ wxBitmap MyFrame::load_file(std::string file_name, int w, int h) {
     wxBitmap bmp(img.Scale(w, h, wxIMAGE_QUALITY_HIGH));
     return bmp;
 };
+
+
+
+void MyFrame::ThreadFunc () {
+
+    mButtonList.push_back(new CCustomBtn(m_panel_components, {250, 120}, {0,0},   "Button One"  ));
+    mButtonList.push_back(new CCustomBtn(m_panel_components, {250, 120}, {0,120}, "Button Two"  ));
+    mButtonList.push_back(new CCustomBtn(m_panel_components, {250, 120}, {0,240}, "Button Three"));
+    mButtonList.push_back(new CCustomBtn(m_panel_components, {250, 120}, {0,360}, "Button Four" ));
+
+    int index = 0;
+    while(!mAppExitCalled) {
+
+        for(auto& it : mButtonList) {
+
+            if(it->GetFocus()) {
+
+                std::string text{"Index\n" + std::to_string(index)};
+                it->SetLabel(text);
+            }
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        index++;
+    }
+
+    for(auto& it : mButtonList) {
+        delete it;
+    }
+}
+

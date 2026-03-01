@@ -72,12 +72,15 @@ class wxTestForm : public wxFrame
 		wxStaticText* m_staticText3;
 		wxStaticLine* m_staticline4;
 		wxHyperlinkCtrl* m_hyperlink;
+		wxPanel* m_panel_components;
+		wxButton* m_button_component_template;
 		wxButton* m_button1;
 		wxButton* m_button2;
 		wxStaticLine* m_staticline6;
 		wxStatusBar* m_statusBar1;
 
 		// Virtual event handlers, override them in your derived class
+		virtual void MyButtonTestBtn( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Btn1_Click( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Btn2_Click( wxCommandEvent& event ) { event.Skip(); }
 
@@ -87,6 +90,23 @@ class wxTestForm : public wxFrame
 		wxTestForm( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1440,1024 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~wxTestForm();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class MyPanel2
+///////////////////////////////////////////////////////////////////////////////
+class MyPanel2 : public wxPanel
+{
+	private:
+
+	protected:
+
+	public:
+
+		MyPanel2( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+
+		~MyPanel2();
 
 };
 
