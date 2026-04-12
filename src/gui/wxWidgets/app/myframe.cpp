@@ -43,8 +43,8 @@ MyFrame::MyFrame(const CBFunc& func)
     m_button_one->SetBitmap(load_file("play-button.png", btn_width, btn_height));
     m_button_two->SetBitmap(load_file("fast-forward.png", btn_width, btn_height));
     m_button_three->SetBitmap(load_file("rewind-button.png", btn_width, btn_height));
-    m_button_four->SetBitmap(load_file("pause.png", btn_width, btn_height));
-    m_button_five->SetBitmap(load_file("on-off-button.png", btn_width, btn_height));
+    // m_button_four->SetBitmap(load_file("pause.png", btn_width, btn_height));
+    // m_button_five->SetBitmap(load_file("on-off-button.png", btn_width, btn_height));
 
     m_hyperlink->SetLabel("www.flaticon.com");
     m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
@@ -160,8 +160,6 @@ wxBitmap MyFrame::load_file(std::string file_name, int w, int h) {
     return bmp;
 };
 
-
-
 void MyFrame::ThreadFunc () {
 
     mButtonList.push_back(new CCustomBtn(m_panel_components, {250, 120}, {0,0},   "Button One"  ));
@@ -175,9 +173,8 @@ void MyFrame::ThreadFunc () {
         for(auto& it : mButtonList) {
 
             if(it->GetFocus()) {
-
                 std::string text{"Index\n" + std::to_string(index)};
-                it->SetLabel(text);
+                it->SetButtonLabel(text);
             }
         }
 

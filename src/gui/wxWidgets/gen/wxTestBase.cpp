@@ -74,29 +74,23 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
 
-	bSizer8->SetMinSize( wxSize( 150,-1 ) );
-	m_button_one = new wxButton( this, wxID_ANY, wxEmptyString, wxPoint( -1,-1 ), wxSize( -1,80 ), 0 );
+	bSizer8->SetMinSize( wxSize( 250,-1 ) );
+	m_button_one = new wxButton( this, wxID_ANY, wxEmptyString, wxPoint( -1,-1 ), wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_one, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_two = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_two = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_two, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	m_button_three->SetForegroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
 
 	bSizer8->Add( m_button_three, 0, wxALL|wxEXPAND, 5 );
-
-	m_button_four = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
-	bSizer8->Add( m_button_four, 0, wxALL|wxEXPAND, 5 );
-
-	m_button_five = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
-	bSizer8->Add( m_button_five, 0, wxALL|wxEXPAND, 5 );
 
 
 	fgSizer4->Add( bSizer8, 5, wxEXPAND, 5 );
 
 	m_notebook_main = new wxNotebook( this, wxID_ANY, wxPoint( -1,-1 ), wxSize( -1,-1 ), 0 );
-	m_notebook_main->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_notebook_main->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	m_panel_download = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_panel_download->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
@@ -186,12 +180,12 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
 	m_button1 = new wxButton( this, wxID_ANY, _("Button One"), wxDefaultPosition, wxSize( 150,80 ), 0 );
-	m_button1->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_button1->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	fgSizer1->Add( m_button1, 0, wxALL, 5 );
 
 	m_button2 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 150,80 ), 0 );
-	m_button2->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_button2->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	fgSizer1->Add( m_button2, 0, wxALL, 5 );
 

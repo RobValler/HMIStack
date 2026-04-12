@@ -27,13 +27,20 @@ CCustomBtn::CCustomBtn(wxWindow* parent, wxSize size, wxPoint pos, std::string l
 
     mBtn = new wxButton(this,
             wxID_ANY,
-            mLabel,
+            "",
             rect.GetPosition(),
             rect.GetSize(),
             wxBORDER);
 
     mBtn->SetBackgroundColour(*gBtnBackGrnColourInactive);
-    mBtn->Bind(wxEVT_PAINT, &CCustomBtn::OnPaint, this);
+    mBtnText = new wxStaticText(this,
+                wxID_ANY,
+                "moo",
+                rect.GetPosition(),
+                rect.GetSize(),
+                0);
+
+    //mBtn->Bind(wxEVT_PAINT, &CCustomBtn::OnPaint, this);
     mBtn->Bind(wxEVT_LEFT_DOWN, &CCustomBtn::OnMouseClick, this);
     mBtn->Bind(wxEVT_RIGHT_DOWN, &CCustomBtn::OnMouseClick, this);
 
@@ -41,7 +48,7 @@ CCustomBtn::CCustomBtn(wxWindow* parent, wxSize size, wxPoint pos, std::string l
 
 CCustomBtn::~CCustomBtn() {
 
-    delete mBtn;
+   // delete mBtn;
 }
 
 void CCustomBtn::OnPaint(wxPaintEvent& event) {
@@ -71,9 +78,10 @@ void CCustomBtn::OnPaint(wxPaintEvent& event) {
     //event.Skip(true);
 }
 
-void CCustomBtn::SetLabel(std::string label) {
+void CCustomBtn::SetButtonLabel(std::string label) {
 
     mLabel = label;
+    mBtnText->SetLabel(mLabel);
 }
 
 void CCustomBtn::OnMouseClick(wxMouseEvent& event) {

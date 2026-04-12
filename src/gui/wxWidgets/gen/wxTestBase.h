@@ -58,8 +58,6 @@ class wxTestForm : public wxFrame
 		wxButton* m_button_one;
 		wxButton* m_button_two;
 		wxButton* m_button_three;
-		wxButton* m_button_four;
-		wxButton* m_button_five;
 		wxNotebook* m_notebook_main;
 		wxPanel* m_panel_download;
 		wxStaticText* m_staticText2;

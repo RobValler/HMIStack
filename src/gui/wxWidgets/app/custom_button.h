@@ -22,7 +22,7 @@ public:
     CCustomBtn() =delete;
     ~CCustomBtn();
 
-    void SetLabel(std::string label);
+    void SetButtonLabel(std::string label);
     bool GetSelect() { return mIsSelected; };
     bool GetFocus() { return mHasFocus; };
 
@@ -37,6 +37,7 @@ private:
     std::atomic<bool> mIsSelected{false};
     std::atomic<bool> mHasFocus{false};
     wxButton* mBtn;
+    wxStaticText* mBtnText;
 
     std::string mLabel{""};
 };
