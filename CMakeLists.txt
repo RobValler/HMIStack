@@ -37,6 +37,8 @@ set(CMAKE_AUTORCC ON)
 
 #PACKAGES
 find_package(Threads REQUIRED)
+find_package(logger 1.0.1 REQUIRED)
+find_package(sigslot 1.0.0 REQUIRED)
 find_package(Boost 1.88.0 REQUIRED COMPONENTS boost)
 find_package(asio 1.36.0 REQUIRED)
 find_package(protobuf 6.32.1 REQUIRED)
@@ -124,6 +126,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
     GLEW::GLEW
     wxWidgets::wxWidgets
+    logger::logger
+    sigslot::sigslot
+)
+
+target_compile_options(${PROJECT_NAME} PRIVATE
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /permissive->
+    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>
 )
 
 #COPY FILES
@@ -155,7 +164,7 @@ endif()
 
 message("######################################################################")
 message("# CONFIGURATION #")
-message("=================")
-message("# - TEST_ENABLE:       [${TEST_ENABLE}]")
-message("# - GUI_FW_SETTING:    [${GUI_FW_SETTING}]")
+message("#---------------#")
+message("# GUI_FW_SETTING:      [${GUI_FW_SETTING}]")
+message("# Logger version:      [${logger_VERSION}]")
 message("######################################################################")

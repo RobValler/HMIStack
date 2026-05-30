@@ -9,20 +9,19 @@
 
 #include "gui_hndl_dmy.h"
 
-#include <iostream>
+#include "logger.h"
 
 void CGuiHndlDmy::Start() {
-    std::cout << "GUI Dummy Start!" << std::endl;
+    CLogger::Log("GUI Dummy Start!");
 }
 
 void CGuiHndlDmy::Stop() {
-    std::cout << "GUI Dummy Stop!" << std::endl;
+    CLogger::Log("GUI Dummy Stop!");
 }
 
 void CGuiHndlDmy::Update(std::string gui_operator, std::string gui_operand) {
-    std::cout << "GUI Dummy Update: operator = " << gui_operator
-              << ", operand = " << gui_operand
-              << std::endl;
+    CLogger::Log("GUI Dummy Update: operator = " + gui_operator
+                 + ", operand = " + gui_operand);
 }
 
 void CGuiHndlDmy::SetCommand(const std::string& gui_operator, const std::string& gui_operand) {

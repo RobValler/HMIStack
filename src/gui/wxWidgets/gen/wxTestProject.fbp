@@ -757,11 +757,11 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <object class="notebookpage" expanded="true">
+                <object class="notebookpage" expanded="false">
                   <property name="bitmap"></property>
                   <property name="label">Download</property>
-                  <property name="select">1</property>
-                  <object class="wxPanel" expanded="true">
+                  <property name="select">0</property>
+                  <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
                     <property name="RightDockable">1</property>
@@ -813,7 +813,7 @@
                     <property name="window_extra_style"></property>
                     <property name="window_name"></property>
                     <property name="window_style">wxTAB_TRAVERSAL</property>
-                    <object class="wxBoxSizer" expanded="true">
+                    <object class="wxBoxSizer" expanded="false">
                       <property name="minimum_size"></property>
                       <property name="name">bSizer2</property>
                       <property name="orient">wxVERTICAL</property>
@@ -847,7 +847,7 @@
                           <property name="enabled">1</property>
                           <property name="fg"></property>
                           <property name="floatable">1</property>
-                          <property name="font">,90,400,20,70,0</property>
+                          <property name="font">,90,400,16,70,0</property>
                           <property name="gripper">0</property>
                           <property name="hidden">0</property>
                           <property name="id">wxID_ANY</property>
@@ -869,7 +869,7 @@
                           <property name="pos"></property>
                           <property name="resize">Resizable</property>
                           <property name="show">1</property>
-                          <property name="size">200,40</property>
+                          <property name="size">-1,-1</property>
                           <property name="style"></property>
                           <property name="subclass">; ; forward_declare</property>
                           <property name="toolbar_pane">0</property>
@@ -939,11 +939,11 @@
                           <property name="window_style"></property>
                         </object>
                       </object>
-                      <object class="sizeritem" expanded="true">
+                      <object class="sizeritem" expanded="false">
                         <property name="border">5</property>
                         <property name="flag">wxALL|wxEXPAND</property>
                         <property name="proportion">0</property>
-                        <object class="wxDataViewListCtrl" expanded="true">
+                        <object class="wxDataViewListCtrl" expanded="false">
                           <property name="bg"></property>
                           <property name="context_help"></property>
                           <property name="context_menu">1</property>
@@ -973,7 +973,7 @@
                 <object class="notebookpage" expanded="false">
                   <property name="bitmap"></property>
                   <property name="label">Upload</property>
-                  <property name="select">0</property>
+                  <property name="select">1</property>
                   <object class="wxPanel" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
@@ -999,7 +999,7 @@
                     <property name="enabled">1</property>
                     <property name="fg"></property>
                     <property name="floatable">1</property>
-                    <property name="font"></property>
+                    <property name="font">,90,400,-1,71,0</property>
                     <property name="gripper">0</property>
                     <property name="hidden">0</property>
                     <property name="id">wxID_ANY</property>
@@ -1082,7 +1082,7 @@
                           <property name="pos"></property>
                           <property name="resize">Resizable</property>
                           <property name="show">1</property>
-                          <property name="size">200,40</property>
+                          <property name="size">-1,-1</property>
                           <property name="style"></property>
                           <property name="subclass">; ; forward_declare</property>
                           <property name="toolbar_pane">0</property>
@@ -1155,11 +1155,11 @@
                     </object>
                   </object>
                 </object>
-                <object class="notebookpage" expanded="false">
+                <object class="notebookpage" expanded="true">
                   <property name="bitmap"></property>
                   <property name="label">Attributes</property>
                   <property name="select">0</property>
-                  <object class="wxPanel" expanded="false">
+                  <object class="wxPanel" expanded="true">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
                     <property name="RightDockable">1</property>
@@ -1267,7 +1267,7 @@
                           <property name="pos"></property>
                           <property name="resize">Resizable</property>
                           <property name="show">1</property>
-                          <property name="size">200,40</property>
+                          <property name="size">-1,-1</property>
                           <property name="style"></property>
                           <property name="subclass">; ; forward_declare</property>
                           <property name="toolbar_pane">0</property>
@@ -1459,7 +1459,7 @@
                 <property name="fg"></property>
                 <property name="floatable">1</property>
                 <property name="focus"></property>
-                <property name="font">,90,400,16,70,0</property>
+                <property name="font">,90,400,12,70,0</property>
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
@@ -1534,7 +1534,7 @@
                 <property name="fg"></property>
                 <property name="floatable">1</property>
                 <property name="focus"></property>
-                <property name="font">,90,400,16,70,0</property>
+                <property name="font">,90,400,12,70,0</property>
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>

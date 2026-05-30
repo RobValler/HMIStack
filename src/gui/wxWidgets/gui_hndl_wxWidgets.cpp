@@ -32,7 +32,7 @@ void CGuiHndlWxWidgets::Stop() {
     mtGuiHandler.join();
 }
 
-void CGuiHndlWxWidgets::Update(std::string gui_operator, std::string gui_operand) {
+void CGuiHndlWxWidgets::Update(std::string, std::string) {
 
 
 }

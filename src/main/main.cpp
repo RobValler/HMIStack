@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
     parm.cmd.m_argc = argc;
     parm.cmd.m_argv = argv;
     parm.hmi_framework = EHMI_FW::EwxWidget;
+    //parm.hmi_framework = EHMI_FW::EImGui;
+    //parm.hmi_framework = EHMI_FW::EQt;
 
     CCore test(parm);
     test.Start();

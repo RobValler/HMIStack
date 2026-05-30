@@ -15,7 +15,10 @@
 
 CHandler::CHandler(const SGuiHndlTypes& parms)
     : mParm(parms)
-{}
+{
+
+
+}
 
 void CHandler::Start() {
 

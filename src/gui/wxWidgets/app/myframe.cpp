@@ -9,6 +9,10 @@
 
 #include "myframe.h"
 
+#include "custom.h"
+#include "sig_slot.h"
+
+
 #include <iostream>
 
 namespace {
@@ -19,6 +23,8 @@ namespace {
 MyFrame::MyFrame(const CBFunc& func)
     : wxTestForm(nullptr, wxID_ANY, "Hello World")
     , mCBFunc(func) {
+
+    testtxt = new MyText(this, "this is a test of ghost text", 450, 200);
 
     SetMenuBar(m_menubar);
 
@@ -63,7 +69,7 @@ MyFrame::~MyFrame() {
     std::cout << "----> MyFrame dtor called" << std::endl;
 }
 
-void MyFrame::Btn1_Click( wxCommandEvent& event ) {
+void MyFrame::Btn1_Click( wxCommandEvent& ) {
 
     wxIcon icon = wxArtProvider::GetIcon(wxART_DELETE, wxART_OTHER, wxSize(30,30));
     wxDataViewIconText iconText("", icon);
@@ -87,10 +93,19 @@ void MyFrame::Btn1_Click( wxCommandEvent& event ) {
     list_func("Dog", 10, 60);
     list_func("Cat", 24, 92);
 
+    struct STest {
+        int ID{0};
+        std::string message{""};
+    };
+    STest d;
+    d.message = "moo moo whatsit!!";
+    CSIGSLOT<STest>::GetInstance().SIGNAL(1, d);
+
+
 }
 
 
-void MyFrame::Btn2_Click( wxCommandEvent& event ) {
+void MyFrame::Btn2_Click( wxCommandEvent& ) {
 
     if(mSwitch) {
 
@@ -138,7 +153,6 @@ void MyFrame::OnClose(wxCloseEvent& event) {
 
 wxBitmap MyFrame::load_file(std::string file_name, int w, int h) {
 
-    int icon;
     wxImage img;
     img.LoadFile(file_name, wxBITMAP_TYPE_PNG);
 
@@ -150,3 +164,6 @@ wxBitmap MyFrame::load_file(std::string file_name, int w, int h) {
     wxBitmap bmp(img.Scale(w, h, wxIMAGE_QUALITY_HIGH));
     return bmp;
 };
+
+
+

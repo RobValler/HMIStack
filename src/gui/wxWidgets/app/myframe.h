@@ -15,6 +15,9 @@
 
 #include <wx/wx.h>
 
+class MyText;
+
+
 class MyFrame : public wxTestForm
 {
 public:
@@ -31,6 +34,10 @@ private:
     CBFunc mCBFunc;
 
     bool mSwitch{true};
+
+
+    MyText* testtxt;
+
 };
 
 #endif // MYFRAME__H

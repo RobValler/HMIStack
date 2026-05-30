@@ -17,6 +17,8 @@ class HMIStackRecipe(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain"
 
     def requirements(self):
+        self.requires("logger/1.0.1")
+        self.requires("sigslot/1.0.0")
         self.requires("boost/1.88.0")
         self.requires("asio/1.36.0")        
         self.requires("gtest/1.17.0")

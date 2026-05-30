@@ -14,13 +14,14 @@
 #include "state_hndl.h"
 #include "state_hndl_types.h"
 
+#include "logger.h"
+
 #include "gui_hndl_Qt.h"
 #include "gui_hndl_dearImGui.h"
 #include "gui_hndl_wxWidgets.h"
 #include "gui_hndl_dmy.h"
 #include "gui_hndl_types.h"
 
-#include <iostream>
 
 struct SPImpl {
 
@@ -70,7 +71,7 @@ CCore::~CCore()
 
 int CCore::Start() {
 
-    std::cout << "Start " << std::endl;
+    CLogger::Log("Start");
     mpStateMachine->Start();
     mpPImpl->mpOperationHndl->Start();
     mpPImpl->mpGuiHndl->Start();
@@ -84,7 +85,7 @@ ECoreStatus CCore::Status() {
 
 int CCore::Stop() {
 
-    std::cout << "Stop" << std::endl;
+    CLogger::Log("Stop");
     mpPImpl->mpGuiHndl->Stop();
     mpPImpl->mpOperationHndl->Stop();
     mpStateMachine->Stop();
@@ -98,9 +99,9 @@ int CCore::Stop() {
 
 void CCore::StatusCallback(const SCBFuncParms& data) {
 
-    std::cout << "StatusCallback(...) called!\n"
-              << "operator = " << data.cb_operator << "\n"
-              << "operand = " << data.cb_operand << std::endl;
+    CLogger::Log(std::string("StatusCallback(...) called!\n")
+                 + "operator = " + data.cb_operator + "\n"
+                 + "operand = " + data.cb_operand);
 
     if(data.cb_operator == "status") {
 

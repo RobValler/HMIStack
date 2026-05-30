@@ -26,6 +26,7 @@ public:
 private:
     SGuiHndlTypes mParm;
     MyApp* mpMyApp = nullptr;
+
 };
 
 #endif // HANDLER__H
