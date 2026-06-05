@@ -21,10 +21,10 @@ namespace {
 }
 
 MyFrame::MyFrame(const CBFunc& func)
-    : wxTestForm(nullptr, wxID_ANY, "Hello World")
+    : wxTestForm(nullptr, wxID_ANY, "")
     , mCBFunc(func) {
 
-    testtxt = new MyText(this, "this is a test of ghost text", 450, 200);
+    //testtxt = new CTextTransparent(this, "this is a test of ghost text", 450, 200);
 
     SetMenuBar(m_menubar);
 
@@ -52,12 +52,10 @@ MyFrame::MyFrame(const CBFunc& func)
     m_hyperlink->SetLabel("www.flaticon.com");
     m_hyperlink->SetURL("https://www.flaticon.com/free-icons/play");
 
-
-
     // data list
-    m_dataViewListDownload->AppendTextColumn("Text", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
-    m_dataViewListDownload->AppendTextColumn("Number", wxDATAVIEW_CELL_INERT, 100, wxALIGN_LEFT);
-    m_dataViewListDownload->AppendProgressColumn("Progress", wxDATAVIEW_CELL_INERT, 150, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendTextColumn("Text", wxDATAVIEW_CELL_INERT, 150, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendTextColumn("Number", wxDATAVIEW_CELL_INERT, 200, wxALIGN_LEFT);
+    m_dataViewListDownload->AppendProgressColumn("Progress", wxDATAVIEW_CELL_INERT, 200, wxALIGN_LEFT);
     m_dataViewListDownload->AppendIconTextColumn("Action",wxDATAVIEW_CELL_ACTIVATABLE, 50, wxALIGN_CENTER);
     m_dataViewListDownload->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &MyFrame::OnItemActivated, this);
 

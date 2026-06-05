@@ -15,9 +15,10 @@
 
 #include <wx/wx.h>
 
-class MyText;
+// forward
+class CTextTransparent;
 
-
+// Frame
 class MyFrame : public wxTestForm
 {
 public:
@@ -36,7 +37,7 @@ private:
     bool mSwitch{true};
 
 
-    MyText* testtxt;
+    CTextTransparent* testtxt;
 
 };
 

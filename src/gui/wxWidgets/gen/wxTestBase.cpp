@@ -74,20 +74,20 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
 
-	bSizer8->SetMinSize( wxSize( 150,-1 ) );
-	m_button_one = new wxButton( this, wxID_ANY, wxEmptyString, wxPoint( -1,-1 ), wxSize( -1,80 ), 0 );
+	bSizer8->SetMinSize( wxSize( 250,-1 ) );
+	m_button_one = new wxButton( this, wxID_ANY, wxEmptyString, wxPoint( -1,-1 ), wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_one, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_two = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_two = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_two, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_three = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_three, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_four = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_four = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_four, 0, wxALL|wxEXPAND, 5 );
 
-	m_button_five = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,80 ), 0 );
+	m_button_five = new wxButton( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,120 ), 0 );
 	bSizer8->Add( m_button_five, 0, wxALL|wxEXPAND, 5 );
 
 
@@ -104,23 +104,23 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	m_staticText2 = new wxStaticText( m_panel_download, wxID_ANY, _("Download"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText2->Wrap( -1 );
-	m_staticText2->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_staticText2->SetFont( wxFont( 20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	bSizer2->Add( m_staticText2, 0, wxALL, 5 );
 
 	m_staticline3 = new wxStaticLine( m_panel_download, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizer2->Add( m_staticline3, 0, wxEXPAND | wxALL, 5 );
 
-	m_dataViewListDownload = new wxDataViewListCtrl( m_panel_download, wxID_ANY, wxDefaultPosition, wxSize( 500,300 ), wxDV_ROW_LINES );
+	m_dataViewListDownload = new wxDataViewListCtrl( m_panel_download, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxDV_ROW_LINES );
 	m_dataViewListDownload->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
-	bSizer2->Add( m_dataViewListDownload, 0, wxALL|wxEXPAND, 5 );
+	bSizer2->Add( m_dataViewListDownload, 1, wxALL|wxEXPAND, 5 );
 
 
 	m_panel_download->SetSizer( bSizer2 );
 	m_panel_download->Layout();
 	bSizer2->Fit( m_panel_download );
-	m_notebook_main->AddPage( m_panel_download, _("Download"), false );
+	m_notebook_main->AddPage( m_panel_download, _("Download"), true );
 	m_panel_upload = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_panel_upload->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DECORATIVE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
@@ -140,7 +140,7 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_panel_upload->SetSizer( bSizer3 );
 	m_panel_upload->Layout();
 	bSizer3->Fit( m_panel_upload );
-	m_notebook_main->AddPage( m_panel_upload, _("Upload"), true );
+	m_notebook_main->AddPage( m_panel_upload, _("Upload"), false );
 	m_panel_attribute = new wxPanel( m_notebook_main, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
@@ -173,12 +173,12 @@ wxTestForm::wxTestForm( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer1->SetFlexibleDirection( wxBOTH );
 	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_button1 = new wxButton( this, wxID_ANY, _("Button One"), wxDefaultPosition, wxSize( 150,80 ), 0 );
+	m_button1 = new wxButton( this, wxID_ANY, _("Button One"), wxDefaultPosition, wxSize( 250,80 ), 0 );
 	m_button1->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	fgSizer1->Add( m_button1, 0, wxALL, 5 );
 
-	m_button2 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 150,80 ), 0 );
+	m_button2 = new wxButton( this, wxID_ANY, _("Button Two"), wxDefaultPosition, wxSize( 250,80 ), 0 );
 	m_button2->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	fgSizer1->Add( m_button2, 0, wxALL, 5 );

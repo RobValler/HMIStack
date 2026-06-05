@@ -2,7 +2,7 @@
 
 #include "custom.h"
 
-MyText::MyText(wxWindow* parent, std::string label, int x, int y)
+CTextTransparent::CTextTransparent(wxWindow* parent, std::string label, int x, int y)
     : wxStaticText(parent, wxID_ANY, label, wxPoint(x, y))
     , mLabel(label)
 {
@@ -11,10 +11,10 @@ MyText::MyText(wxWindow* parent, std::string label, int x, int y)
     font.SetPointSize(24);
     this->SetFont(font);
     this->SetSize(x, y);
-    Bind(wxEVT_PAINT, &MyText::OnPaint, this);
+    Bind(wxEVT_PAINT, &CTextTransparent::OnPaint, this);
 }
 
-void MyText::OnPaint(wxPaintEvent&) {
+void CTextTransparent::OnPaint(wxPaintEvent&) {
     wxPaintDC dc(this);
     dc.DrawText(mLabel, 10, 10);
 }

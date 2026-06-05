@@ -7,7 +7,7 @@
 # * without the express permission of the copyright holder
 # *****************************************************************/
 cmake_minimum_required(VERSION 3.22.0)
-project ( hmi_stack )
+project (hmistack)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -39,13 +39,14 @@ set(CMAKE_AUTORCC ON)
 find_package(Threads REQUIRED)
 find_package(logger 1.0.1 REQUIRED)
 find_package(sigslot 1.0.0 REQUIRED)
-find_package(Boost 1.88.0 REQUIRED COMPONENTS boost)
-find_package(asio 1.36.0 REQUIRED)
 find_package(protobuf 6.32.1 REQUIRED)
 find_package(imgui 1.92.2 REQUIRED)
 find_package(glfw3 3.3.8 REQUIRED)
 find_package(GLEW 2.2.0 REQUIRED)
 find_package(Qt6 COMPONENTS Core Widgets)
+#find_package(wxWidgets 3.3.2 REQUIRED COMPONENTS core base)
+#find_package(Boost 1.88.0 REQUIRED COMPONENTS boost)
+#find_package(asio 1.36.0 REQUIRED)
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 if(TEST_ENABLE)
 find_package(GTest REQUIRED)
@@ -126,8 +127,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
     GLEW::GLEW
     wxWidgets::wxWidgets
-    logger::logger
-    sigslot::sigslot
+    devfw::logger
+    devfw::sigslot
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE

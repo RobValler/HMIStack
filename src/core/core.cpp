@@ -29,7 +29,7 @@ struct SPImpl {
     std::shared_ptr<COperationHndl> mpOperationHndl;
 };
 
-CCore::CCore(const CoreParms& parm)
+CCore::CCore(const SCoreParms& parm)
     : mParm(parm)
     , mpPImpl(std::make_unique<SPImpl>())
 {

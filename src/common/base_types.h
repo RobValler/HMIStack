@@ -35,7 +35,7 @@ struct SCmdLineParm {
     char **m_argv;
 };
 
-struct CoreParms {
+struct SCoreParms {
     EHMI_FW hmi_framework{EHMI_FW::ENone};
     SCmdLineParm cmd;
 };
