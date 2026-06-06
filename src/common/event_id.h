@@ -7,10 +7,13 @@
  * without the express permission of the copyright holder
  *****************************************************************/
 
+#ifndef EVENT_ID__H
+#define EVENT_ID__H
 
-class IOperation
-{
-    public:
-    IOperation(){};
-    virtual void process() =0;
+enum class EEventID : unsigned int {
+
+    ENone = 0,
+    EBtnPress
 };
+
+#endif // EVENT_ID__H

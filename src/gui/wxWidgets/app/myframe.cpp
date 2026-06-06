@@ -91,15 +91,10 @@ void MyFrame::Btn1_Click( wxCommandEvent& ) {
     list_func("Dog", 10, 60);
     list_func("Cat", 24, 92);
 
-    struct STest {
-        int ID{0};
-        std::string message{""};
-    };
-    STest d;
-    d.message = "moo moo whatsit!!";
-    CSIGSLOT<STest>::GetInstance().SIGNAL(1, d);
 
-
+    SSlotData d;
+    d.string_data = "Btn1_Click";
+    CSigSlot::Signal(1, d);
 }
 
 
@@ -124,6 +119,9 @@ void MyFrame::Btn2_Click( wxCommandEvent& ) {
         mSwitch = true;
     }
 
+    SSlotData d;
+    d.string_data = "Btn2_Click";
+    CSigSlot::Signal(1, d);
 }
 
 void MyFrame::OnItemActivated(wxDataViewEvent& event)

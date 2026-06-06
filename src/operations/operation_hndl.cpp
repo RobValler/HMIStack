@@ -9,26 +9,20 @@
 
 #include "operation_hndl.h"
 
+#include "event_id.h"
+
 #include "sig_slot.h"
 #include "logger.h"
 
-#include <string>
-
-struct STest {
-    int ID{0};
-    std::string message{""};
-};
 
 void COperationHndl::Start() {
 
-    STest data;
+    auto test_slot = [](const SSlotData& data) {
 
-    auto test_slot = [](const STest& data) {
-
-        CLogger::Log("---> Signal func called : " + data.message);
+        CLogger::Log("---> Button Pressed : " + data.string_data);
     };
 
-    CSIGSLOT<STest>::GetInstance().CONNECT(1, test_slot);
+    CSigSlot::Connect(static_cast<std::uint16_t>(EEventID::EBtnPress), test_slot);
 }
 
 void COperationHndl::Stop() {
