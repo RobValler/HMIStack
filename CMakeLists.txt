@@ -121,6 +121,7 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CMAKE_THREAD_LIBS_INIT}
+    Qt6::Core
     Qt6::Widgets
     Qt6::WebEngineWidgets
     imgui::imgui
@@ -166,16 +167,17 @@ endif()
 message("######################################################################")
 message("# CONFIGURATION #")
 message("#---------------#")
-message("# GUI_FW_SETTING:      [${GUI_FW_SETTING}]")
-message("# Logger version:      [${logger_VERSION}]")
-message("# SigSlot version:     [${sigslot_VERSION}]")
-message("# DearImGui version:   [${imgui_VERSION}]")
-message("# GLFW3 version:       [${glfw3_VERSION}]")
-message("# GLEW version:        [${GLEW_VERSION}]")
-message("# Qt6 Core version:    [${Qt6Core_VERSION}]")
-message("# Qt6 Widgets version: [${Qt6Widgets_VERSION}]")
-message("# TEST_ENABLE:         [${TEST_ENABLE}]")
+message("# GUI_FW_SETTING:          [${GUI_FW_SETTING}]")
+message("# Logger version:          [${logger_VERSION}]")
+message("# SigSlot version:         [${sigslot_VERSION}]")
+message("# DearImGui version:       [${imgui_VERSION}]")
+message("# GLFW3 version:           [${glfw3_VERSION}]")
+message("# GLEW version:            [${GLEW_VERSION}]")
+message("# Qt6 Core version:        [${Qt6Core_VERSION}]")
+message("# Qt6 Widgets version:     [${Qt6Widgets_VERSION}]")
+message("# Qt6 WebEngine version:   [${Qt6WebEngineWidgets_VERSION}]")
+message("# TEST_ENABLE:             [${TEST_ENABLE}]")
 if(TEST_ENABLE)
-message("# GTest version:       [${GTest_VERSION}]")
+message("# GTest version:           [${GTest_VERSION}]")
 endif()
 message("######################################################################")

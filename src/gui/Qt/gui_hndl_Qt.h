@@ -15,7 +15,6 @@
 #include "i_gui_hndl.h"
 
 #include <string>
-//#include <thread>
 #include <atomic>
 #include <memory>
 #include <mutex>
@@ -40,13 +39,9 @@ private:
     std::shared_ptr<QApplication> mpQApp;
     std::shared_ptr<MainWindow> mpUI;
     std::atomic<bool> mIsExistRequest{false};
-    //std::thread mtGuiHandler;
-    //void ThreadFuncServer();
-
     std::string mCommandGUIoperator;
     std::string mCommandGUIoperand;
     std::mutex mCommandAccessMutex;
-
     std::atomic<bool> mCommandChange{false};
 };
 

@@ -14,5 +14,3 @@ cmake   -DCMAKE_TOOLCHAIN_FILE=$BUILD_TYPE/generators/conan_toolchain.cmake \
         -DProtobuf_PROTOC_EXECUTABLE=~/.conan2/p/b/protofc2018eefb4dd/p/bin/protoc \
         ..
 cmake --build . -j16
-
-

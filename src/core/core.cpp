@@ -93,11 +93,7 @@ int CCore::Stop() {
     mpPImpl->mpGuiHndl->Stop();
     mpPImpl->mpOperationHndl->Stop();
     mpStateMachine->Stop();
-
-    if(true) {
-        mCurrentCoreStatus = ECoreStatus::EShutdown;
-    }
-
+    mCurrentCoreStatus = ECoreStatus::EShutdown;
     return 0;
 }
 

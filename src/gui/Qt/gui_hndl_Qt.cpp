@@ -16,12 +16,10 @@
 
 void CGuiHndlQt::Start() {
 
-    //mtGuiHandler = std::thread(&CGuiHndlQt::ThreadFuncServer, this);
 }
 
 void CGuiHndlQt::Stop() {
 
-    //mtGuiHandler.join();
 }
 
 void CGuiHndlQt::Run() {
@@ -57,15 +55,3 @@ void CGuiHndlQt::GetCommand(std::string& gui_operator, std::string& gui_operand)
         mCommandChange = false;
     }
 }
-
-// void CGuiHndlQt::ThreadFuncServer() {
-
-//     mpQApp = std::make_shared<QApplication>(mParm.m_argc, mParm.m_argv);
-//     mpUI = std::make_shared<MainWindow>();
-//     mpUI->SetCallback([this](std::string gui_operator, std::string gui_operand) { this->SetCommand(gui_operator, gui_operand); });
-//     mpUI->show();
-//     mpQApp->exec();
-
-//     // send the program stop command
-//     SetCommand("program_status", "stop");
-// }

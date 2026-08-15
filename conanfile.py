@@ -19,14 +19,14 @@ class HMIStackRecipe(ConanFile):
     def requirements(self):
         self.requires("logger/1.0.1")
         self.requires("sigslot/1.0.0")
-#        self.requires("boost/1.88.0")
-#        self.requires("asio/1.36.0")
         self.requires("gtest/1.17.0")
         self.requires("protobuf/6.32.1")
         self.requires("imgui/1.92.2b")
         self.requires("glfw/3.3.8")
         self.requires("glew/2.2.0")
 #        self.requires("wxwidgets/3.3.2")
+#        self.requires("boost/1.88.0")
+#        self.requires("asio/1.36.0")
 
     def layout(self):
         cmake_layout(self)
