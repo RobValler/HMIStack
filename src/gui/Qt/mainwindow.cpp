@@ -11,9 +11,13 @@
 #include "./ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QWebChannel>
+
+#include "hmibridge.h"
 
 #include <string>
 #include <iostream>
+
 
 Q_DECLARE_METATYPE(std::string)
 
@@ -32,6 +36,14 @@ MainWindow::MainWindow(QWidget *parent)
     mGuiCommandConnection = connect(this, SIGNAL(GuiCommandSignal(std::string, std::string)),
                                 this, SLOT(GuiCommandSlot(std::string, std::string)),
                                 Qt::QueuedConnection);
+
+
+
+    HmiBridge *bridge = new HmiBridge(this);
+    QWebChannel *channel = new QWebChannel(this);
+    channel->registerObject("hmi", bridge);
+    ui->webEngineView->page()->setWebChannel(channel);
+
 }
 
 MainWindow::~MainWindow()

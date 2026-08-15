@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Button Page</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      margin: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome</h1>
+    <p>Click a button below:</p>
+
+    <button onclick="showMessage('Button 1 clicked!', true)">
+      Button 1
+    </button>
+
+    <button onclick="showMessage('Button 2 clicked!', false)">
+      Button 2
+    </button>
+
+    <p id="output"></p>
+  </div>
+
+  <script>
+    function showMessage(message, led) {
+      document.getElementById("output").innerText = message;
+      hmi.setLed(led);
+    }
+  </script>
+
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script>
+      let hmi;
+      new QWebChannel(qt.webChannelTransport, function(channel) {
+        hmi = channel.objects.hmi;
+      });
+    </script>
+
+</body>
+</html>
