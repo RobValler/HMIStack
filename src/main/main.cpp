@@ -34,18 +34,19 @@ int main(int argc, char *argv[])
     SCoreParms parm;
     parm.cmd.m_argc = argc;
     parm.cmd.m_argv = argv;
-    parm.hmi_framework = EHMI_FW::EwxWidget;
+    //parm.hmi_framework = EHMI_FW::EwxWidget;
     //parm.hmi_framework = EHMI_FW::EImGui;
-    //parm.hmi_framework = EHMI_FW::EQt;
+    parm.hmi_framework = EHMI_FW::EQt;
 
-    CCore test(parm);
-    test.Start();
+    CCore app(parm);
+    app.Start();
+    app.Run();
     while(!gExitRequest) {
 
-        if(ECoreStatus::EShutdownRequest == test.Status()) {
+        if(ECoreStatus::EShutdownRequest == app.Status()) {
             break;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-    test.Stop();
+    app.Stop();
 }

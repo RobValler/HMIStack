@@ -33,12 +33,10 @@ CCore::CCore(const SCoreParms& parm)
     : mParm(parm)
     , mpPImpl(std::make_unique<SPImpl>())
 {
-
     // HMI / GUI
     switch(mParm.hmi_framework) {
         case EHMI_FW::ENone:
             break;
-        break;
         case EHMI_FW::EQt:
             mpPImpl->mpGuiHndl = std::make_shared<CGuiHndlQt>(mParm.cmd);
             break;
@@ -76,6 +74,12 @@ int CCore::Start() {
     mpPImpl->mpOperationHndl->Start();
     mpPImpl->mpGuiHndl->Start();
     return 0;
+}
+
+void CCore::Run() {
+
+    CLogger::Log("Run");
+    mpPImpl->mpGuiHndl->Run();
 }
 
 ECoreStatus CCore::Status() {

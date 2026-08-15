@@ -16,12 +16,23 @@
 
 void CGuiHndlQt::Start() {
 
-    mtGuiHandler = std::thread(&CGuiHndlQt::ThreadFuncServer, this);
+    //mtGuiHandler = std::thread(&CGuiHndlQt::ThreadFuncServer, this);
 }
 
 void CGuiHndlQt::Stop() {
 
-    mtGuiHandler.join();
+    //mtGuiHandler.join();
+}
+
+void CGuiHndlQt::Run() {
+
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    mpQApp = std::make_shared<QApplication>(mParm.m_argc, mParm.m_argv);
+    mpUI = std::make_shared<MainWindow>();
+    mpUI->SetCallback([this](std::string gui_operator, std::string gui_operand) { this->SetCommand(gui_operator, gui_operand); });
+    mpUI->show();
+    mpQApp->exec();
+    SetCommand("program_status", "stop");
 }
 
 void CGuiHndlQt::Update(std::string gui_operator, std::string gui_operand) {
@@ -47,14 +58,14 @@ void CGuiHndlQt::GetCommand(std::string& gui_operator, std::string& gui_operand)
     }
 }
 
-void CGuiHndlQt::ThreadFuncServer() {
+// void CGuiHndlQt::ThreadFuncServer() {
 
-    mpQApp = std::make_shared<QApplication>(mParm.m_argc, mParm.m_argv);
-    mpUI = std::make_shared<MainWindow>();
-    mpUI->SetCallback([this](std::string gui_operator, std::string gui_operand) { this->SetCommand(gui_operator, gui_operand); });
-    mpUI->show();
-    mpQApp->exec();
+//     mpQApp = std::make_shared<QApplication>(mParm.m_argc, mParm.m_argv);
+//     mpUI = std::make_shared<MainWindow>();
+//     mpUI->SetCallback([this](std::string gui_operator, std::string gui_operand) { this->SetCommand(gui_operator, gui_operand); });
+//     mpUI->show();
+//     mpQApp->exec();
 
-    // send the program stop command
-    SetCommand("program_status", "stop");
-}
+//     // send the program stop command
+//     SetCommand("program_status", "stop");
+// }

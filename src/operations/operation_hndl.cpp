@@ -10,10 +10,8 @@
 #include "operation_hndl.h"
 
 #include "event_id.h"
-
 #include "sig_slot.h"
 #include "logger.h"
-
 
 void COperationHndl::Start() {
 

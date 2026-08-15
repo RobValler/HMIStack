@@ -15,7 +15,7 @@
 #include "i_gui_hndl.h"
 
 #include <string>
-#include <thread>
+//#include <thread>
 #include <atomic>
 #include <memory>
 #include <mutex>
@@ -30,6 +30,7 @@ public:
     ~CGuiHndlQt() override =default;
     void Start() override;
     void Stop() override;
+    void Run() override;
     void Update(std::string gui_operator, std::string gui_operand) override;
     void SetCommand(const std::string& gui_operator, const std::string& gui_operand) override;
     void GetCommand(std::string& gui_operator, std::string& gui_operand) override;
@@ -39,8 +40,8 @@ private:
     std::shared_ptr<QApplication> mpQApp;
     std::shared_ptr<MainWindow> mpUI;
     std::atomic<bool> mIsExistRequest{false};
-    std::thread mtGuiHandler;
-    void ThreadFuncServer();
+    //std::thread mtGuiHandler;
+    //void ThreadFuncServer();
 
     std::string mCommandGUIoperator;
     std::string mCommandGUIoperand;

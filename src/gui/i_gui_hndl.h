@@ -18,6 +18,7 @@ public:
     virtual ~IGuiHndl(){}
     virtual void Start() =0;
     virtual void Stop() =0;
+    virtual void Run() =0;
     virtual void Update(std::string, std::string) =0;
     virtual void SetCommand(const std::string&, const std::string&) =0;
     virtual void GetCommand(std::string&, std::string&) =0;

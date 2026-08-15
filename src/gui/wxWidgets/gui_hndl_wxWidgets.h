@@ -29,6 +29,7 @@ public:
     ~CGuiHndlWxWidgets();
     void Start() override;
     void Stop() override;
+    void Run() override {};
     void Update(std::string gui_operator, std::string gui_operand) override;
     void SetCommand(const std::string& gui_operator, const std::string& gui_operand) override;
     void GetCommand(std::string& gui_operator, std::string& gui_operand) override;
@@ -38,13 +39,10 @@ private:
     SGuiHndlTypes mParm;
     std::atomic<bool> mIsExistRequest{false};
     std::thread mtGuiHandler;
-
     std::shared_ptr<CHandler> mpHandler;
-
     std::string mCommandGUIoperator;
     std::string mCommandGUIoperand;
     std::mutex mCommandAccessMutex;
-
     std::atomic<bool> mCommandChange{false};
 };
 

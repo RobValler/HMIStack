@@ -33,6 +33,7 @@ public:
     ~CCore();
 
     int Start();
+    void Run();
     ECoreStatus Status();
     int Stop();
 

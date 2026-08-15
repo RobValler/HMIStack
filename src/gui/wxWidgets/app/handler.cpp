@@ -35,7 +35,7 @@ void CHandler::Start() {
 
     wxApp::SetInstance(mpMyApp);
     wxTheApp->CallOnInit();
-    wxTheApp->OnRun();
+    wxTheApp->OnRun(); // blocking
     wxTheApp->OnExit();
 
     wxEntryCleanup();

@@ -13,7 +13,7 @@
 #include <QFileDialog>
 
 #include <string>
-// #include <iostream>
+#include <iostream>
 
 Q_DECLARE_METATYPE(std::string)
 
@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    qRegisterMetaType<std::string>();
+    qRegisterMetaType<std::string>("std::string");
 
     mGuiUpdateConnection = connect(this, SIGNAL(GuiUpdateSignal(std::string, std::string)),
                                 this, SLOT(GuiUpdateSlot(std::string, std::string)),
@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
     mGuiCommandConnection = connect(this, SIGNAL(GuiCommandSignal(std::string, std::string)),
                                 this, SLOT(GuiCommandSlot(std::string, std::string)),
                                 Qt::QueuedConnection);
-
 }
 
 MainWindow::~MainWindow()
@@ -72,16 +71,21 @@ void MainWindow::on_testButton_clicked()
 
 void MainWindow::on_FileTransferpushButton_clicked()
 {
+    connect(ui->webEngineView, &QWebEngineView::loadFinished,
+            this, [](bool ok) {
+                qDebug() << "HTML load:" << ok;
+    });
+
     QString filename = QFileDialog::getOpenFileName(
         this,
         tr("Open Document"),
         QDir::currentPath(),
         tr("All files (*.*);; Document files (*.txt *.rtf);; Executable files (*.exe)"));
 
-    if (!filename.isNull())
-    {
-        //qDebug(filename.toUtf8());
-        emit GuiCommandSignal("file_transfer", filename.toStdString());
-    }
+    if (!filename.isEmpty()) {
+        //emit GuiCommandSignal("file_transfer", filename.toStdString());
+        std::cout << "Filename = " << filename.toStdString() << std::endl;
 
+        ui->webEngineView->load(QUrl::fromLocalFile(filename));
+    }
 }

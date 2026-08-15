@@ -9,6 +9,8 @@
 
 #include "gui_hndl_dearImGui.h"
 
+#include "logger.h"
+
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
@@ -54,7 +56,8 @@ void CGuiHndlDearImGui::GetCommand(std::string& gui_operator, std::string& gui_o
 void CGuiHndlDearImGui::ThreadFuncServer() {
 
     if (!glfwInit()) {
-        std::cerr << "Failed to init GLFW\n";
+
+        CLogger::Err("Failed to init GLFW");
         return;
     }
     const char* glsl_version = "#version 330";

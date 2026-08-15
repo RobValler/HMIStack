@@ -39,11 +39,10 @@ set(CMAKE_AUTORCC ON)
 find_package(Threads REQUIRED)
 find_package(logger 1.0.1 REQUIRED)
 find_package(sigslot 1.0.0 REQUIRED)
-find_package(protobuf 6.32.1 REQUIRED)
 find_package(imgui 1.92.2 REQUIRED)
 find_package(glfw3 3.3.8 REQUIRED)
 find_package(GLEW 2.2.0 REQUIRED)
-find_package(Qt6 COMPONENTS Core Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets WebEngineWidgets)
 #find_package(wxWidgets 3.3.2 REQUIRED COMPONENTS core base)
 #find_package(Boost 1.88.0 REQUIRED COMPONENTS boost)
 #find_package(asio 1.36.0 REQUIRED)
@@ -123,6 +122,7 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CMAKE_THREAD_LIBS_INIT}
     Qt6::Widgets
+    Qt6::WebEngineWidgets
     imgui::imgui
     glfw
     GLEW::GLEW
@@ -168,4 +168,14 @@ message("# CONFIGURATION #")
 message("#---------------#")
 message("# GUI_FW_SETTING:      [${GUI_FW_SETTING}]")
 message("# Logger version:      [${logger_VERSION}]")
+message("# SigSlot version:     [${sigslot_VERSION}]")
+message("# DearImGui version:   [${imgui_VERSION}]")
+message("# GLFW3 version:       [${glfw3_VERSION}]")
+message("# GLEW version:        [${GLEW_VERSION}]")
+message("# Qt6 Core version:    [${Qt6Core_VERSION}]")
+message("# Qt6 Widgets version: [${Qt6Widgets_VERSION}]")
+message("# TEST_ENABLE:         [${TEST_ENABLE}]")
+if(TEST_ENABLE)
+message("# GTest version:       [${GTest_VERSION}]")
+endif()
 message("######################################################################")
