@@ -14,30 +14,30 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="OperandLabel">
+   <widget class="QLabel" name="OperandTxt">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>510</y>
-      <width>300</width>
+      <width>80</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>-- -- </string>
+     <string>Operand</string>
     </property>
    </widget>
-   <widget class="QLabel" name="OperatorLabel">
+   <widget class="QLabel" name="OperatorTxt">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>480</y>
-      <width>300</width>
+      <width>80</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>-- -- </string>
+     <string>Operator</string>
     </property>
    </widget>
    <widget class="QPushButton" name="LoadWebsiteButton">
@@ -109,17 +109,47 @@
      <string>Message to html</string>
     </property>
    </widget>
-   <widget class="QLabel" name="HTMLAddress">
+   <widget class="QLabel" name="HTMLAddressTxt">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>450</y>
-      <width>300</width>
+      <width>80</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>-- -- </string>
+     <string>Html address</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="HTMLAddressData">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>450</y>
+      <width>400</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="OperatorData">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>480</y>
+      <width>400</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="OperandData">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>510</y>
+      <width>400</width>
+      <height>30</height>
+     </rect>
     </property>
    </widget>
   </widget>

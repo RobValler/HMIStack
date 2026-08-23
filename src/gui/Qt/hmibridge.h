@@ -2,30 +2,37 @@
 #ifndef HMI_BRIDGE__H
 #define HMI_BRIDGE__H
 
+#include "logger.h"
+
 #include <QObject>
-//#include <QDebug>
-#include <QJsonValue>
 #include <QJsonObject>
 
-#include <iostream>
+struct SCBData {
+    std::string opcode;
+    std::string operand;
+};
+
+using cb_type = std::function<void(const SCBData&)>;
 
 class CHmiBridge : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit CHmiBridge(QObject *parent = nullptr)
+    explicit CHmiBridge(cb_type cb, QObject *parent = nullptr)
         : QObject(parent)
-        , mParent(parent)
+        , mCB(cb)
     {}
 
 public slots:
     void messageHMIToApp(const QJsonObject& data) {
 
-
-        std::string foo = data["text"].toString().toStdString();
-        std::string moo = data["msg"].toString().toStdString();
-        std::cout << "CPP based function says = " << foo << ", " << moo << std::endl;
+        if(mCB) {
+            SCBData payload;
+            payload.opcode = data["text"].toString().toStdString();
+            payload.operand = data["msg"].toString().toStdString();
+            mCB(payload);
+        }
     }
 
     std::string messageAppToHMI() {
@@ -36,7 +43,8 @@ signals:
     void messageAppToHMI(const QJsonObject& data);
 
 private:
-    QObject mParent;
+    QObject* mParent;
+    cb_type mCB;
 };
 
 #endif // HMI_BRIDGE__H

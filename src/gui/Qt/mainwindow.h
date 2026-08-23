@@ -21,6 +21,7 @@ class MainWindow;
 QT_END_NAMESPACE
 
 class CHmiBridge;
+struct SCBData;
 
 class MainWindow : public QMainWindow
 {
@@ -46,11 +47,14 @@ private slots:
     void on_MessageToHtml_clicked();
 
 private:
+    void HtmlCBFunc(const SCBData& data);
     Ui::MainWindow *ui;
     std::unique_ptr<CHmiBridge> mHmiBridge;
     QMetaObject::Connection mGuiUpdateConnection;
     QMetaObject::Connection mGuiCommandConnection;
     std::function<void(std::string, std::string)> mCBFunc;
+    int mMsgIndex{0};
+
 };
 
 #endif // MAINWINDOW_H

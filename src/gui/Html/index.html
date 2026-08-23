@@ -73,7 +73,7 @@
             document.getElementById("output").innerText = text;
             const payload = {
                 text: text,
-                msg: msg
+                msg: msg + " " + msgIndex++
             };
             hmi2app.messageHMIToApp(payload);
         }
@@ -88,6 +88,7 @@
     <script>
         let hmi2app;
         let app2hmi;
+        let msgIndex = 0;
         document.getElementById("output").innerText = "Empty";
         new QWebChannel(qt.webChannelTransport, function(channel) {
             hmi2app = channel.objects.hmi2app;
