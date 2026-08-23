@@ -3,27 +3,35 @@
 #define HMI_BRIDGE__H
 
 #include <QObject>
-#include <QDebug>
+//#include <QDebug>
+#include <QJsonValue>
+#include <QJsonObject>
 
-class HmiBridge : public QObject
+#include <iostream>
+
+class CHmiBridge : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit HmiBridge(QObject *parent = nullptr)
+    explicit CHmiBridge(QObject *parent = nullptr)
         : QObject(parent)
     {}
 
 public slots:
-    void setLed(bool on)
-    {
-        qDebug() << "CPP based function says = LED:" << on;
+    void messageHMIToApp(const QJsonObject& data) {
 
-        // Do something in your C++ application
+        std::string foo = data["text"].toString().toStdString();
+        std::string moo = data["msg"].toString().toStdString();
+        std::cout << "CPP based function says = " << foo << ", " << moo << std::endl;
+    }
+
+    std::string messageAppToHMI() {
+        return "test moo moo";
     }
 
 signals:
-    void temperatureChanged(double temperature);
+    void CB(double value);
 };
 
 #endif // HMI_BRIDGE__H

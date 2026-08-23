@@ -68,6 +68,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/gui/DearImGui)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/gen)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/wxWidgets/app)
+include_directories(${CMAKE_SOURCE_DIR}/src/gui/Html)
 include_directories(${CMAKE_SOURCE_DIR}/bindings)
 include_directories(${CMAKE_SOURCE_DIR}/src/gui/Dummy)
 
@@ -104,6 +105,11 @@ file(GLOB APP_HEADERS
     ${CMAKE_SOURCE_DIR}/bindings/*.h
 )
 
+# HTML FILES
+file(GLOB APP_HTML
+    ${CMAKE_SOURCE_DIR}/src/gui/Html/*.html
+)
+
 #CONFIG FILES
 file(GLOB APP_CONFIG
     ${CMAKE_SOURCE_DIR}/README.md
@@ -117,6 +123,7 @@ add_executable(${PROJECT_NAME}
     ${APP_SOURCES}
     ${APP_HEADERS}
     ${APP_CONFIG}
+    ${APP_HTML}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

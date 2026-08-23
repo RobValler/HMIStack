@@ -10,44 +10,40 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include "hmibridge.h"
+
 #include <QFileDialog>
 #include <QWebChannel>
 
-#include "hmibridge.h"
-
 #include <string>
 #include <iostream>
-
 
 Q_DECLARE_METATYPE(std::string)
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
+    , ui(new Ui::MainWindow) {
 
+    ui->setupUi(this);
     qRegisterMetaType<std::string>("std::string");
 
-    mGuiUpdateConnection = connect(this, SIGNAL(GuiUpdateSignal(std::string, std::string)),
-                                this, SLOT(GuiUpdateSlot(std::string, std::string)),
-                                Qt::QueuedConnection);
+    mGuiUpdateConnection = connect( this, SIGNAL(GuiUpdateSignal(std::string, std::string)),
+                                    this, SLOT(GuiUpdateSlot(std::string, std::string)),
+                                    Qt::QueuedConnection);
 
-    mGuiCommandConnection = connect(this, SIGNAL(GuiCommandSignal(std::string, std::string)),
-                                this, SLOT(GuiCommandSlot(std::string, std::string)),
-                                Qt::QueuedConnection);
+    mGuiCommandConnection =connect( this, SIGNAL(GuiCommandSignal(std::string, std::string)),
+                                    this, SLOT(GuiCommandSlot(std::string, std::string)),
+                                    Qt::QueuedConnection);
 
-
-
-    HmiBridge *bridge = new HmiBridge(this);
-    QWebChannel *channel = new QWebChannel(this);
-    channel->registerObject("hmi", bridge);
-    ui->webEngineView->page()->setWebChannel(channel);
-
+    CHmiBridge *local_bridge = new CHmiBridge(this);
+    QWebChannel *local_channel = new QWebChannel(this);
+    local_channel->registerObject("hmi2app", local_bridge);
+    local_channel->registerObject("app2hmi", local_bridge);
+    ui->webEngineView->page()->setWebChannel(local_channel);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
+
     disconnect(mGuiUpdateConnection);
     disconnect(mGuiCommandConnection);
     delete ui;
@@ -76,28 +72,31 @@ void MainWindow::GuiCommandSlot(std::string gui_operator, std::string gui_operan
     mCBFunc(gui_operator, gui_operand);
 }
 
-void MainWindow::on_testButton_clicked()
-{
+void MainWindow::on_testButton_clicked() {
+
     emit GuiCommandSignal("test_send", "moose");
 }
 
-void MainWindow::on_FileTransferpushButton_clicked()
-{
-    connect(ui->webEngineView, &QWebEngineView::loadFinished,
-            this, [](bool ok) {
-                qDebug() << "HTML load:" << ok;
+void MainWindow::on_FileTransferpushButton_clicked() {
+
+    connect(ui->webEngineView,
+            &QWebEngineView::loadFinished,
+            this, [](bool ok){
+        qDebug() << "HTML load:" << ok;
     });
 
     QString filename = QFileDialog::getOpenFileName(
         this,
-        tr("Open Document"),
+        tr("Open web page"),
         QDir::currentPath(),
-        tr("All files (*.*);; Document files (*.txt *.rtf);; Executable files (*.exe)"));
+        //"",
+        //tr("All files (*.*);; Document files (*.txt *.rtf);; Executable files (*.exe)")
+        tr("Html file (*.html)")
+    );
 
     if (!filename.isEmpty()) {
         //emit GuiCommandSignal("file_transfer", filename.toStdString());
         std::cout << "Filename = " << filename.toStdString() << std::endl;
-
         ui->webEngineView->load(QUrl::fromLocalFile(filename));
     }
 }

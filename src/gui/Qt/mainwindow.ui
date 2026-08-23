@@ -17,9 +17,9 @@
    <widget class="QLabel" name="OperandLabel">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>139</x>
       <y>480</y>
-      <width>300</width>
+      <width>411</width>
       <height>30</height>
      </rect>
     </property>
@@ -30,9 +30,9 @@
    <widget class="QLabel" name="OperatorLabel">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>139</x>
       <y>440</y>
-      <width>300</width>
+      <width>411</width>
       <height>30</height>
      </rect>
     </property>

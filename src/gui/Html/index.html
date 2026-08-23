@@ -53,34 +53,45 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>Welcome</h1>
-    <p>Click a button below:</p>
+    <div class="container">
+        <h1>Welcome</h1>
+        <p>Click a button below:</p>
 
-    <button onclick="showMessage('Button 1 clicked!', true)">
-      Button 1
-    </button>
+        <button onclick="sendMessage('Button 1 clicked!', 'Boaty McBoatFace')">
+          Button 1
+        </button>
 
-    <button onclick="showMessage('Button 2 clicked!', false)">
-      Button 2
-    </button>
+        <button onclick="getMessage()">
+          Button 2
+        </button>
 
-    <p id="output"></p>
-  </div>
+        <p id="output"></p>
+    </div>
 
-  <script>
-    function showMessage(message, led) {
-      document.getElementById("output").innerText = message;
-      hmi.setLed(led);
-    }
-  </script>
+    <script>
+        function sendMessage(text, msg) {       
+            document.getElementById("output").innerText = text;
+            const payload = {
+                text: text,
+                msg: msg
+            };
+            hmi2app.messageHMIToApp(payload);
+        }
+        function getMessage() {
+            message = hmi2app.messageAppToHMI();
+            document.getElementById("output").innerText = "empty";
+        }
+    </script>
 
     <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+
     <script>
-      let hmi;
-      new QWebChannel(qt.webChannelTransport, function(channel) {
-        hmi = channel.objects.hmi;
-      });
+        let hmi2app;
+        let app2hmi;
+        new QWebChannel(qt.webChannelTransport, function(channel) {
+        hmi2app = channel.objects.hmi2app;
+        app2hmi = channel.objects.app2hmi;
+        });
     </script>
 
 </body>
