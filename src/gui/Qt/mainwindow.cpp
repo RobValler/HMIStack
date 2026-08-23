@@ -22,7 +22,8 @@ Q_DECLARE_METATYPE(std::string)
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow) {
+    , ui(new Ui::MainWindow)
+    , mHmiBridge(std::make_unique<CHmiBridge>(this)) {
 
     ui->setupUi(this);
     qRegisterMetaType<std::string>("std::string");
@@ -35,11 +36,16 @@ MainWindow::MainWindow(QWidget *parent)
                                     this, SLOT(GuiCommandSlot(std::string, std::string)),
                                     Qt::QueuedConnection);
 
-    CHmiBridge *local_bridge = new CHmiBridge(this);
     QWebChannel *local_channel = new QWebChannel(this);
-    local_channel->registerObject("hmi2app", local_bridge);
-    local_channel->registerObject("app2hmi", local_bridge);
+    local_channel->registerObject("hmi2app", mHmiBridge.get());
+    local_channel->registerObject("app2hmi", mHmiBridge.get());
     ui->webEngineView->page()->setWebChannel(local_channel);
+
+
+    // temporary
+    std::string filename = "/home/rob/WORK/C_CPP/HMIStack/src/gui/Html/index.html";
+    ui->webEngineView->load(QUrl::fromLocalFile(filename.c_str()));
+    ui->HTMLAddress->setText(filename.c_str());
 }
 
 MainWindow::~MainWindow() {
@@ -72,12 +78,7 @@ void MainWindow::GuiCommandSlot(std::string gui_operator, std::string gui_operan
     mCBFunc(gui_operator, gui_operand);
 }
 
-void MainWindow::on_testButton_clicked() {
-
-    emit GuiCommandSignal("test_send", "moose");
-}
-
-void MainWindow::on_FileTransferpushButton_clicked() {
+void MainWindow::on_LoadWebsiteButton_clicked() {
 
     connect(ui->webEngineView,
             &QWebEngineView::loadFinished,
@@ -98,5 +99,14 @@ void MainWindow::on_FileTransferpushButton_clicked() {
         //emit GuiCommandSignal("file_transfer", filename.toStdString());
         std::cout << "Filename = " << filename.toStdString() << std::endl;
         ui->webEngineView->load(QUrl::fromLocalFile(filename));
+        ui->HTMLAddress->setText(filename);
     }
+}
+
+void MainWindow::on_MessageToHtml_clicked() {
+
+    QJsonObject payload;
+    payload["text"] = "Hello from Qt!";
+    payload["msg"] = "fluffy ";
+    emit mHmiBridge->messageAppToHMI(payload);
 }

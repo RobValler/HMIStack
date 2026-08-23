@@ -78,8 +78,8 @@
             hmi2app.messageHMIToApp(payload);
         }
         function getMessage() {
-            message = hmi2app.messageAppToHMI();
-            document.getElementById("output").innerText = "empty";
+            //message = hmi2app.messageAppToHMI();
+            document.getElementById("output").innerText = "No action";
         }
     </script>
 
@@ -88,9 +88,15 @@
     <script>
         let hmi2app;
         let app2hmi;
+        document.getElementById("output").innerText = "Empty";
         new QWebChannel(qt.webChannelTransport, function(channel) {
-        hmi2app = channel.objects.hmi2app;
-        app2hmi = channel.objects.app2hmi;
+            hmi2app = channel.objects.hmi2app;
+            app2hmi = channel.objects.app2hmi;
+            app2hmi.messageAppToHMI.connect(function(data) {
+                console.log("Received from Qt:", data);
+                document.getElementById("output").innerText = data.text;
+                console.log("Message:", data.msg);
+            });
         });
     </script>
 

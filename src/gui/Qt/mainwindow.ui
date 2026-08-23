@@ -17,9 +17,9 @@
    <widget class="QLabel" name="OperandLabel">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>480</y>
-      <width>411</width>
+      <x>140</x>
+      <y>510</y>
+      <width>300</width>
       <height>30</height>
      </rect>
     </property>
@@ -30,9 +30,9 @@
    <widget class="QLabel" name="OperatorLabel">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>440</y>
-      <width>411</width>
+      <x>140</x>
+      <y>480</y>
+      <width>300</width>
       <height>30</height>
      </rect>
     </property>
@@ -40,7 +40,7 @@
      <string>-- -- </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="FileTransferpushButton">
+   <widget class="QPushButton" name="LoadWebsiteButton">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>File Button</string>
+     <string>Load website</string>
     </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
@@ -95,6 +95,32 @@
       <string>Something else</string>
      </attribute>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="MessageToHtml">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>130</y>
+      <width>110</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Message to html</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="HTMLAddress">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>450</y>
+      <width>300</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-- -- </string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

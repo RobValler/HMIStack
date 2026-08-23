@@ -20,6 +20,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class CHmiBridge;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -27,7 +29,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
     // ## PUBLIC ##
     void SetCallback(const std::function<void(std::string, std::string)>& CBFunc);
     void GuiUpdate(std::string gui_operator, std::string gui_operand);
@@ -41,13 +42,15 @@ private slots:
     // ## SLOTS ##
     void GuiUpdateSlot(std::string gui_operator, std::string gui_operand);
     void GuiCommandSlot(std::string gui_operator, std::string gui_operand);
-    void on_testButton_clicked();
-    void on_FileTransferpushButton_clicked();
+    void on_LoadWebsiteButton_clicked();
+    void on_MessageToHtml_clicked();
 
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<CHmiBridge> mHmiBridge;
     QMetaObject::Connection mGuiUpdateConnection;
     QMetaObject::Connection mGuiCommandConnection;
     std::function<void(std::string, std::string)> mCBFunc;
 };
+
 #endif // MAINWINDOW_H

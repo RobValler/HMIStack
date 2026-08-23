@@ -16,10 +16,12 @@ class CHmiBridge : public QObject
 public:
     explicit CHmiBridge(QObject *parent = nullptr)
         : QObject(parent)
+        , mParent(parent)
     {}
 
 public slots:
     void messageHMIToApp(const QJsonObject& data) {
+
 
         std::string foo = data["text"].toString().toStdString();
         std::string moo = data["msg"].toString().toStdString();
@@ -31,7 +33,10 @@ public slots:
     }
 
 signals:
-    void CB(double value);
+    void messageAppToHMI(const QJsonObject& data);
+
+private:
+    QObject mParent;
 };
 
 #endif // HMI_BRIDGE__H
